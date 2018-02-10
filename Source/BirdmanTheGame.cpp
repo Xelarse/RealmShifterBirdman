@@ -24,7 +24,7 @@ bool BirdmanTheGame::init()
 		return false;
 	}
 
-	renderer->setWindowTitle("Endless Runner");
+	renderer->setWindowTitle("Realm Shifter");
 	renderer->setClearColour(ASGE::COLOURS::BLACK);
 	renderer->setSpriteMode(ASGE::SpriteSortMode::BACK_TO_FRONT);
 	toggleFPS();
@@ -41,6 +41,10 @@ bool BirdmanTheGame::init()
 	{
 		return false;
 	}
+
+	//----------------------------- OUR STUFF GOES BELOW HERE ---------------------------
+
+	scene_manager = std::make_unique<SceneManager>();
 
 	return true;
 }

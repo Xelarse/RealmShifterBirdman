@@ -2,6 +2,9 @@
 #include <Engine\OGLGame.h>
 #include <Engine\Sprite.h>
 
+
+#include "SceneManager.h"
+
 namespace ASGE {
 	struct GameTime;
 }
@@ -73,9 +76,16 @@ private:
 	*/
 	void keyHandler(const ASGE::SharedEventData data);
 
+
+	//STUFF WE ADD GOES BELOW HERE FOR CLARITY //
+
 private:
 	std::unique_ptr<ASGE::Sprite> backdrop = nullptr;
 	int key_handler_id = -1;  /**< Input Callback ID. 
 							       The callback ID assigned by the game engine. */
+
+	//STUFF WE ADD GOES BELOW HERE FOR CLARITY //
+
+	std::unique_ptr<SceneManager> scene_manager = nullptr;
 };
 
