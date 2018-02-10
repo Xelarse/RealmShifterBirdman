@@ -45,6 +45,7 @@ bool BirdmanTheGame::init()
 	//----------------------------- OUR STUFF GOES BELOW HERE ---------------------------
 
 	scene_manager = std::make_unique<SceneManager>();
+	state_machine = std::make_unique<StateMachine>();
 
 	return true;
 }
@@ -56,7 +57,28 @@ void BirdmanTheGame::update(const ASGE::GameTime& ms)
 
 void BirdmanTheGame::render(const ASGE::GameTime& ms)
 {
-	renderer->renderSprite(*backdrop, BACKGROUND_LAYER);
+	switch (overall_state)
+	{
+		case OverallState::MENU:
+		{
+			break;
+		}
+
+		case OverallState::PAUSE:
+		{
+			break;
+		}
+
+		case OverallState::GAMEPLAY:
+		{
+			break;
+		}
+
+		case OverallState::GAMEOVER:
+		{
+			break;
+		}
+	}
 }
 
 void BirdmanTheGame::keyHandler(const ASGE::SharedEventData data)
@@ -67,8 +89,8 @@ void BirdmanTheGame::keyHandler(const ASGE::SharedEventData data)
 	auto key = key_event->key;
 	auto action = key_event->action;
 
-	if (key == ASGE::KEYS::KEY_ESCAPE)
+	if (action == ASGE::KEYS::KEY_PRESSED)
 	{
-		signalExit();
+		state_machine->passInInputToStateMachine(key);
 	}
 }
