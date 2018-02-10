@@ -5,6 +5,9 @@
 
 class SceneManager
 {
+
+	friend class BirdmanTheGame;
+
 	/*Used in a scene, add multiple nodes to a single scene, z_order must be between 0 - 4.
 	when creating a sprite for use in node ensure you use a unique smart pointer!*/
 	struct NODE
@@ -34,9 +37,5 @@ public:
 
 
 private:
-
-
-
-
 
 };
