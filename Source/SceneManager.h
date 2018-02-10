@@ -1,13 +1,7 @@
 #pragma once
+#include <Engine\OGLGame.h>
 #include <iostream>
 #include <vector>
-
-
-namespace ASGE
-{
-	class Renderer;
-	class Sprite;
-}
 
 class SceneManager
 {
@@ -24,6 +18,7 @@ class SceneManager
 	struct SCENE
 	{
 		std::vector<NODE> scene_renderables;
+		bool is_sorted = false;
 	};
 
 
