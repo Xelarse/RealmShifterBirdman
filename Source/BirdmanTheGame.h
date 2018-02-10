@@ -4,6 +4,7 @@
 
 
 #include "SceneManager.h"
+#include "StateMachine.h"
 
 namespace ASGE {
 	struct GameTime;
@@ -87,5 +88,6 @@ private:
 	//STUFF WE ADD GOES BELOW HERE FOR CLARITY //
 
 	std::unique_ptr<SceneManager> scene_manager = nullptr;
+	std::unique_ptr<StateMachine> state_machine = nullptr;
 };
 
