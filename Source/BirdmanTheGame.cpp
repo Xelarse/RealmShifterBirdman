@@ -47,6 +47,19 @@ bool BirdmanTheGame::init()
 	scene_manager = std::make_unique<SceneManager>();
 	state_machine = std::make_unique<StateMachine>();
 
+	player = std::make_unique<Player>();
+	player->init(renderer.get());
+	player_node.node_game_object = player.get();
+	player_node.z_order = 1;
+
+	block = std::make_unique<LevelBlocks>();
+	block->init(renderer.get());
+	block_node.node_game_object = block.get();
+	player_node.z_order = 2;
+
+	scene_manager->addNodeToScene(test_scene, player_node);
+	scene_manager->addNodeToScene(test_scene, block_node);
+
 	return true;
 }
 
@@ -61,6 +74,8 @@ void BirdmanTheGame::render(const ASGE::GameTime& ms)
 	{
 		case OverallState::MENU:
 		{
+			//default start state
+			scene_manager->renderScene(test_scene, renderer.get());
 			break;
 		}
 

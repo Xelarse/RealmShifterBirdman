@@ -5,6 +5,8 @@
 
 #include "SceneManager.h"
 #include "StateMachine.h"
+#include "Player.h"
+#include "LevelBlocks.h"
 
 namespace ASGE {
 	struct GameTime;
@@ -89,5 +91,13 @@ private:
 
 	std::unique_ptr<SceneManager> scene_manager = nullptr;
 	std::unique_ptr<StateMachine> state_machine = nullptr;
+
+	//for testing currently
+	std::unique_ptr<Player> player = nullptr;
+	std::unique_ptr<LevelBlocks> block = nullptr;
+
+	SceneManager::SCENE test_scene;
+	SceneManager::NODE player_node;
+	SceneManager::NODE block_node;
 };
 

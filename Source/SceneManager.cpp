@@ -19,7 +19,7 @@ void SceneManager::renderScene(SCENE scene, ASGE::Renderer * renderer)
 
 	for (auto& node : scene.scene_renderables)
 	{
-		renderer->renderSprite(*node.node_sprite);
+		renderer->renderSprite(*node.node_game_object->getObjectSprite());
 	}
 }
 
