@@ -14,6 +14,8 @@ class SceneManager
 	struct NODE
 	{
 		GameObject* node_game_object = nullptr;
+
+		//The closer the number to 0 the higher it will be rendered into the scene
 		int z_order = -1;
 	};
 
@@ -32,9 +34,9 @@ public:
 	SceneManager() = default;
 	~SceneManager() = default;
 
-	void clearScene(SCENE scene);
+	void clearScene(SCENE& scene);
 	void renderScene(SCENE scene, ASGE::Renderer* renderer);
-	void addNodeToScene(SCENE scene, NODE node);
+	void addNodeToScene(SCENE& scene, NODE& node);
 
 
 private:

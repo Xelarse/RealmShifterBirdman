@@ -2,8 +2,7 @@
 
 bool LevelBlocks::init(ASGE::Renderer * renderer)
 {
-	ASGE::Sprite* throwaway = object_sprite.get();
-	throwaway = renderer->createRawSprite();
+	object_sprite = renderer->createUniqueSprite();
 
 	if (!(object_sprite->loadTexture("..\\..\\Resources\\ObstacleBlock.png")))
 	{

@@ -30,7 +30,7 @@ bool BirdmanTheGame::init()
 	toggleFPS();
 
 	this->inputs->use_threads = false;
-	
+
 	key_handler_id = this->inputs->addCallbackFnc(
 		ASGE::EventType::E_KEY, &BirdmanTheGame::keyHandler, this);
 
@@ -55,7 +55,7 @@ bool BirdmanTheGame::init()
 	block = std::make_unique<LevelBlocks>();
 	block->init(renderer.get());
 	block_node.node_game_object = block.get();
-	player_node.z_order = 2;
+	block_node.z_order = 2;
 
 	scene_manager->addNodeToScene(test_scene, player_node);
 	scene_manager->addNodeToScene(test_scene, block_node);
