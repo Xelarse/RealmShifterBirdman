@@ -3,16 +3,19 @@
 #include <iostream>
 #include <vector>
 
+#include "GameObject.h"
+
 class SceneManager
 {
 
 	friend class BirdmanTheGame;
 
-	/*Used in a scene, add multiple nodes to a single scene, z_order must be between 0 - 4.
-	when creating a sprite for use in node ensure you use a unique smart pointer!*/
+	/*Used in a scene, add multiple nodes to a single scene, z_order must be between 0 - 4.*/
 	struct NODE
 	{
-		ASGE::Sprite* node_sprite = nullptr;
+		GameObject* node_game_object = nullptr;
+
+		//The closer the number to 0 the higher it will be rendered into the scene
 		int z_order = -1;
 	};
 
@@ -31,9 +34,9 @@ public:
 	SceneManager() = default;
 	~SceneManager() = default;
 
-	void clearScene(SCENE scene);
+	void clearScene(SCENE& scene);
 	void renderScene(SCENE scene, ASGE::Renderer* renderer);
-	void addNodeToScene(SCENE scene, NODE node);
+	void addNodeToScene(SCENE& scene, NODE& node);
 
 
 private:
