@@ -9,7 +9,7 @@ public:
 	GameObject() = default;
 	~GameObject() = default;
 
-	virtual bool init(ASGE::Renderer * renderer) = 0;
+	virtual void init(ASGE::Renderer * renderer) = 0;
 
 	ASGE::Sprite* getObjectSprite();
 	bool getIsRendering();
