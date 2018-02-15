@@ -24,7 +24,6 @@ class SceneManager
 	struct SCENE
 	{
 		std::vector<NODE> scene_renderables;
-		bool is_sorted = false;
 	};
 
 

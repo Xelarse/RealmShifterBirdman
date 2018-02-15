@@ -10,8 +10,14 @@ bool Player::init(ASGE::Renderer * renderer)
 		return false;
 	}
 
-	object_sprite->xPos(200);
-	object_sprite->yPos(200);
+
+	float width = 250;
+	float height = 200;
+
+	object_sprite->xPos(250);
+	object_sprite->yPos(520);
+	object_sprite->width(width);
+	object_sprite->height(height);
 	return true;
 
 }

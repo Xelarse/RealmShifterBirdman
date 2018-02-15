@@ -16,8 +16,8 @@ BirdmanTheGame::~BirdmanTheGame()
 
 bool BirdmanTheGame::init()
 {
-	game_width = 844;
-	game_height = 476;
+	game_width = 1280;
+	game_height = 720;
 
 	if (!initAPI(ASGE::Renderer::WindowMode::WINDOWED))
 	{
