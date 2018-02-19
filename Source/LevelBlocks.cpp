@@ -33,3 +33,13 @@ void LevelBlocks::update(const ASGE::GameTime& ms)
 {
 	//Add update logic here if required
 }
+
+bool LevelBlocks::getIsUsed()
+{
+	return is_used;
+}
+
+void LevelBlocks::setIsUsed(bool option)
+{
+	is_used = option;
+}

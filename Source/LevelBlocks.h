@@ -18,6 +18,9 @@ public:
 	void init(ASGE::Renderer * renderer) override;
 	void update(const ASGE::GameTime& ms) override;
 
+	bool getIsUsed();
+	void setIsUsed(bool option);
+
 private:
 	
 	LevelBlocks() = default;
@@ -25,6 +28,7 @@ private:
 	float width;
 	float height;
 	BlockTypes block_type;
+	bool is_used = false;
 };
 
 
