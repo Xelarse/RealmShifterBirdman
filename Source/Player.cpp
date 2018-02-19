@@ -19,10 +19,14 @@ void Player::init(ASGE::Renderer * renderer)
 
 void Player::moveLeft(const ASGE::GameTime & ms)
 {
+	float delta_time = ms.delta_time.count() / 1000;
+	object_sprite->xPos(object_sprite->xPos() - 10 * delta_time);
 }
 
 void Player::moveRight(const ASGE::GameTime & ms)
 {
+	float delta_time = ms.delta_time.count() / 1000;
+	object_sprite->xPos(object_sprite->xPos() + 10 * delta_time);
 }
 
 void Player::jump(const ASGE::GameTime & ms)
