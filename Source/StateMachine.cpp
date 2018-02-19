@@ -3,7 +3,7 @@
 #include "StateMachine.h"
 
 std::atomic<MenuState> menu_state = MenuState::HOVER_START;
-std::atomic<OverallState> overall_state = OverallState::MENU;
+std::atomic<OverallState> overall_state = OverallState::GAMEPLAY;
 std::atomic<PauseState> pause_state = PauseState::HOVER_CONTINUE;
 std::atomic<PlayerJumpState> jump_state = PlayerJumpState::JUMP_OFF;
 std::atomic<PlayerMoveState> move_state = PlayerMoveState::NONE;

@@ -28,3 +28,8 @@ void LevelBlocks::init(ASGE::Renderer * renderer)
 	object_sprite->width(width);
 	object_sprite->height(height);
 }
+
+void LevelBlocks::update(const ASGE::GameTime& ms)
+{
+	//Add update logic here if required
+}
