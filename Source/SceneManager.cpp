@@ -1,12 +1,11 @@
 #include "SceneManager.h"
-#include <algorithm>
 
 void SceneManager::clearScene(SCENE& scene)
 {
 	scene.scene_renderables.clear();
 }
 
-void SceneManager::renderScene(SCENE scene, ASGE::Renderer * renderer)
+void SceneManager::renderScene(SCENE& scene, ASGE::Renderer * renderer)
 {
 	for (auto& node : scene.scene_renderables)
 	{

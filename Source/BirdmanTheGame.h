@@ -7,6 +7,7 @@
 #include "StateMachine.h"
 #include "Player.h"
 #include "LevelBlocks.h"
+#include "BlockPool.h"
 
 namespace ASGE {
 	struct GameTime;
@@ -94,10 +95,13 @@ private:
 
 	//for testing currently
 	std::unique_ptr<Player> player = nullptr;
-	std::unique_ptr<LevelBlocks> block = nullptr;
+	std::unique_ptr<BlockPool> block_pool = nullptr;
+
+
 
 	SceneManager::SCENE test_scene;
 	SceneManager::NODE player_node;
-	SceneManager::NODE block_node;
+	SceneManager::NODE block_node1;
+	SceneManager::NODE block_node2;
 };
 

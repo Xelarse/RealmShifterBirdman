@@ -34,7 +34,7 @@ public:
 	~SceneManager() = default;
 
 	void clearScene(SCENE& scene);
-	void renderScene(SCENE scene, ASGE::Renderer* renderer);
+	void renderScene(SCENE& scene, ASGE::Renderer* renderer);
 	void addNodeToScene(SCENE& scene, NODE& node);
 
 

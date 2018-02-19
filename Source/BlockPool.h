@@ -11,8 +11,10 @@ class BlockPool
 
 public:
 
-	BlockPool(ASGE::Renderer* renderer);
+	BlockPool(ASGE::Renderer * renderer);
 	~BlockPool() = default;
+
+	void blockPoolInit(ASGE::Renderer* renderer);
 
 	LevelBlocks* getNewRWBlock();
 	LevelBlocks* getNewDWBlock();
