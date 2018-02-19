@@ -46,19 +46,28 @@ bool BirdmanTheGame::init()
 
 	scene_manager = std::make_unique<SceneManager>();
 	state_machine = std::make_unique<StateMachine>();
+	block_pool = std::make_unique<BlockPool>(renderer.get());
 
 	player = std::make_unique<Player>(renderer.get());
 	player_node.node_game_object = player.get();
 	player_node.z_order = 1;
 
-	block = std::make_unique<LevelBlocks>(renderer.get(), BlockTypes::REAL_WORLD, 1000, 500);
-	block->getObjectSprite()->xPos(200);
-	block->getObjectSprite()->yPos(200);
-	block_node.node_game_object = block.get();
-	block_node.z_order = 2;
+	block_node1.node_game_object = block_pool->getNewDWBlock();
+	block_node1.node_game_object->getObjectSprite()->xPos(100);
+	block_node1.node_game_object->getObjectSprite()->yPos(100);
+	block_node1.node_game_object->getObjectSprite()->width(500);
+	block_node1.node_game_object->getObjectSprite()->height(500);
+	block_node1.z_order = 2;
+
+	block_node2.node_game_object = block_pool->getNewRWBlock();
+	block_node2.node_game_object->getObjectSprite()->xPos(200);
+	block_node2.node_game_object->getObjectSprite()->yPos(200);
+	block_node2.z_order = 1;
+
 
 	scene_manager->addNodeToScene(test_scene, player_node);
-	scene_manager->addNodeToScene(test_scene, block_node);
+	scene_manager->addNodeToScene(test_scene, block_node1);
+	scene_manager->addNodeToScene(test_scene, block_node2);
 
 	return true;
 }

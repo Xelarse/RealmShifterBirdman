@@ -19,7 +19,7 @@ void LevelBlocks::init(ASGE::Renderer * renderer)
 
 	else if (block_type == BlockTypes::REAL_WORLD)
 	{
-		object_sprite->loadTexture("..\\..\\Resources\\ObstacleBlock.png");
+		object_sprite->loadTexture("..\\..\\Resources\\Backdrop.jpg");
 	}
 	
 
@@ -32,4 +32,14 @@ void LevelBlocks::init(ASGE::Renderer * renderer)
 void LevelBlocks::update(const ASGE::GameTime& ms)
 {
 	//Add update logic here if required
+}
+
+bool LevelBlocks::getIsUsed()
+{
+	return is_used;
+}
+
+void LevelBlocks::setIsUsed(bool option)
+{
+	is_used = option;
 }

@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\BirdmanTheGame.h" />
+    <ClInclude Include="..\..\Source\BlockPool.h" />
     <ClInclude Include="..\..\Source\GameFont.h" />
     <ClInclude Include="..\..\Source\GameObject.h" />
     <ClInclude Include="..\..\Source\LevelBlocks.h" />
@@ -127,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\BirdmanTheGame.cpp" />
+    <ClCompile Include="..\..\Source\BlockPool.cpp" />
     <ClCompile Include="..\..\Source\GameFont.cpp" />
     <ClCompile Include="..\..\Source\GameObject.cpp" />
     <ClCompile Include="..\..\Source\LevelBlocks.cpp" />
