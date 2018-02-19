@@ -10,6 +10,7 @@ public:
 	~GameObject() = default;
 
 	virtual void init(ASGE::Renderer * renderer) = 0;
+	virtual void update(const ASGE::GameTime& ms) = 0;
 
 	ASGE::Sprite* getObjectSprite();
 	bool getIsRendering();

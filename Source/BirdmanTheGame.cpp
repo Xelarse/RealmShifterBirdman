@@ -65,7 +65,7 @@ bool BirdmanTheGame::init()
 
 void BirdmanTheGame::update(const ASGE::GameTime& ms)
 {
-
+	player->update(ms);
 }
 
 void BirdmanTheGame::render(const ASGE::GameTime& ms)
@@ -74,8 +74,7 @@ void BirdmanTheGame::render(const ASGE::GameTime& ms)
 	{
 		case OverallState::MENU:
 		{
-			//default start state
-			scene_manager->renderScene(test_scene, renderer.get());
+
 			break;
 		}
 
@@ -86,6 +85,8 @@ void BirdmanTheGame::render(const ASGE::GameTime& ms)
 
 		case OverallState::GAMEPLAY:
 		{
+			//default start state
+			scene_manager->renderScene(test_scene, renderer.get());
 			break;
 		}
 
@@ -107,5 +108,10 @@ void BirdmanTheGame::keyHandler(const ASGE::SharedEventData data)
 	if (action == ASGE::KEYS::KEY_PRESSED)
 	{
 		state_machine->passInInputToStateMachine(key);
+	}
+
+	if (action == ASGE::KEYS::KEY_RELEASED && move_state != PlayerMoveState::NONE)
+	{
+		move_state = PlayerMoveState::NONE;
 	}
 }

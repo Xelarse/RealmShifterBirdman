@@ -16,6 +16,7 @@ public:
 
 
 	void init(ASGE::Renderer * renderer) override;
+	void update(const ASGE::GameTime& ms) override;
 
 private:
 	
