@@ -18,6 +18,20 @@ private:
 	void processPauseState(int input_key);
 	void processGameState(int input_key);
 	void processGameoverState(int input_key);
+	void processLevelSelect(int input_key);
+	void processWorldTypeState(int input_key);
+};
+
+enum class LevelSelect
+{
+	NONE = 0,
+	LEVEL1
+};
+
+enum class WorldTypeState
+{
+	DREAMWORLD,
+	REALWORLD
 };
 
 enum class MenuState
@@ -67,3 +81,5 @@ extern std::atomic<PauseState> pause_state;
 extern std::atomic<PlayerJumpState> jump_state;
 extern std::atomic<GameoverState> gameover_state;
 extern std::atomic<PlayerMoveState> move_state;
+extern std::atomic<LevelSelect> level_select;
+extern std::atomic<WorldTypeState> world_type_state;
