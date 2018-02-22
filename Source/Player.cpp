@@ -34,7 +34,18 @@ void Player::update(const ASGE::GameTime& ms)
 		}
 	}
 
-	//TODO add jump update later
+	if (jump_state == PlayerJumpState::JUMP_ON)
+	{
+		jump(ms);
+	}
+
+	if (is_jumping && isGrounded())
+	{
+		y_velocity = 0;
+		is_jumping = false;
+		is_grounded = true;
+		jump_state = PlayerJumpState::JUMP_OFF;
+	}
 }
 
 void Player::moveLeft(const ASGE::GameTime & ms)
@@ -51,4 +62,28 @@ void Player::moveRight(const ASGE::GameTime & ms)
 
 void Player::jump(const ASGE::GameTime & ms)
 {
+	if (!is_jumping)
+	{
+		is_jumping = true;
+		is_grounded = false;
+		y_velocity = -50;
+	}
+
+	object_sprite->yPos(object_sprite->yPos() + y_velocity * (ms.delta_time.count() /1000));
+
+	y_velocity += gravity * ms.delta_time.count() / 1000;
+}
+
+bool Player::isGrounded()
+{
+	if (object_sprite->yPos() >= 720 - (height/2))
+	{
+		object_sprite->yPos(720 - height/2);
+		return true;
+	}
+
+	else
+	{
+		return false;
+	}
 }
