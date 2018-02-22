@@ -66,7 +66,7 @@ void Player::jump(const ASGE::GameTime & ms)
 	{
 		is_jumping = true;
 		is_grounded = false;
-		y_velocity = -50;
+		y_velocity = -jump_strength;
 	}
 
 	object_sprite->yPos(object_sprite->yPos() + y_velocity * (ms.delta_time.count() /1000));
@@ -76,9 +76,9 @@ void Player::jump(const ASGE::GameTime & ms)
 
 bool Player::isGrounded()
 {
-	if (object_sprite->yPos() >= 720 - (height/2))
+	if (object_sprite->yPos() >= 720 - (height))
 	{
-		object_sprite->yPos(720 - height/2);
+		object_sprite->yPos(720 - height);
 		return true;
 	}
 
