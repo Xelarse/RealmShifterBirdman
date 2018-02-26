@@ -201,6 +201,18 @@ void StateMachine::processGameState(int input_key)
 			break;
 		}
 
+		case ASGE::KEYS::KEY_V:
+		{
+			if (world_type_state == WorldTypeState::DREAMWORLD)
+			{
+				world_type_state = WorldTypeState::REALWORLD;
+			}
+			else
+			{
+				world_type_state = WorldTypeState::DREAMWORLD;
+			}
+		}
+
 	}
 }
 
@@ -251,17 +263,4 @@ void StateMachine::processLevelSelect(int input_key)
 	
 }
 
-void StateMachine::processWorldTypeState(int input_key)
-{
-	switch (input_key)
-	{
-	case ASGE::KEYS::KEY_J:
-	{
-		world_type_state = WorldTypeState::REALWORLD;
-	}
-	case ASGE::KEYS::KEY_K:
-	{
-		world_type_state = WorldTypeState::DREAMWORLD;
-	}
-	}
-}
+
