@@ -65,10 +65,23 @@ void BirdmanTheGame::update(const ASGE::GameTime& ms)
 {
 	player->update(ms);
 
-	for (auto& node : level1_RW.scene_renderables)
+	if (world_type_state == WorldTypeState::REALWORLD)
 	{
-		landOnBlockCheck(player.get(), node.node_game_object);
+		for (auto& node : level1_RW.scene_renderables)
+		{
+			landOnBlockCheck(player.get(), node.node_game_object);
+		}
 	}
+
+	else if (world_type_state == WorldTypeState::DREAMWORLD)
+	{
+		for (auto& node : level1_DW.scene_renderables)
+		{
+			landOnBlockCheck(player.get(), node.node_game_object);
+		}
+	}
+
+
 
 }
 
@@ -170,7 +183,7 @@ void BirdmanTheGame::landOnBlockCheck(Player* player, GameObject* block)
 {
 	if (isSpriteColliding(player, block))
 	{
-		if (player->getSpriteMaxY() - collider_tolerance == block->getSpriteY())
+		if (player->getSpriteMaxY() == block->getSpriteY())
 		{
 			player->setIsGrounded(true);
 		}
