@@ -80,6 +80,8 @@ private:
 	*/
 	void keyHandler(const ASGE::SharedEventData data);
 
+	void Level1();
+
 
 	//STUFF WE ADD GOES BELOW HERE FOR CLARITY //
 
@@ -105,8 +107,20 @@ private:
 
 
 	SceneManager::SCENE test_scene;
+	SceneManager::SCENE level1_DW;
+	SceneManager::SCENE level1_RW;
+
+
 	SceneManager::NODE player_node;
 	SceneManager::NODE block_node1;
 	SceneManager::NODE block_node2;
+	SceneManager::NODE block_node3;
+	SceneManager::NODE block_node4;
+	SceneManager::NODE block_node5;
+	SceneManager::NODE block_node6;
+	SceneManager::NODE block_node7;
+	SceneManager::NODE block_node8;
+	SceneManager::NODE block_node9;
+
 };
 
