@@ -13,6 +13,10 @@ public:
 	virtual void update(const ASGE::GameTime& ms) = 0;
 
 	ASGE::Sprite* getObjectSprite();
+	float getSpriteY();
+	float getSpriteX();
+	float getSpriteMaxY();
+	float getSpriteMaxX();
 	bool getIsRendering();
 
 	void setIsRendering(bool value);

@@ -26,6 +26,7 @@ public:
 
 
 	bool isGrounded();
+	void setIsGrounded(bool type);
 
 private:
 	Player() = default;

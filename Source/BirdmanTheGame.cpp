@@ -127,3 +127,43 @@ void BirdmanTheGame::keyHandler(const ASGE::SharedEventData data)
 		}
 	}
 }
+
+bool BirdmanTheGame::isSpriteColliding(Player* player, GameObject * blocks)
+{
+	bool x_collide = false;
+	bool y_collide = false;
+
+	if (player->getSpriteX() <= (blocks->getSpriteMaxX() - collider_tolerance)
+		&& player->getSpriteMaxX() >= (blocks->getSpriteX() + collider_tolerance))
+	{
+		x_collide = true;
+	}
+
+	if (player->getSpriteY() <= (blocks->getSpriteMaxY() - collider_tolerance)
+		&& player->getSpriteMaxY() >= (blocks->getSpriteY() + collider_tolerance))
+	{
+		y_collide = true;
+	}
+
+
+	if (x_collide && y_collide)
+	{
+		x_collide = false;
+		y_collide = false;
+		return true;
+	}
+
+	return false;
+}
+
+void BirdmanTheGame::landOnBlockCheck(Player* player, GameObject* block)
+{
+	if (isSpriteColliding(player, block))
+	{
+		if (player->getSpriteMaxY() - collider_tolerance == block->getSpriteY())
+		{
+			player->setIsGrounded(true);
+		}
+	}
+
+}

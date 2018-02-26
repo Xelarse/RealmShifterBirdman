@@ -87,3 +87,8 @@ bool Player::isGrounded()
 		return false;
 	}
 }
+
+void Player::setIsGrounded(bool type)
+{
+	is_grounded = type;
+}
