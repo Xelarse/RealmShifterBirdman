@@ -24,19 +24,24 @@ public:
 	void moveRight(const ASGE::GameTime& ms);
 	void jump(const ASGE::GameTime& ms);
 
+	float yVelocity();
+	void yVelocity(float vel);
 
-	bool isGrounded();
+	bool isOnFloor();
+	void setIsGrounded(bool type);
+
+	void setIsJumping(bool type);
 
 private:
 	Player() = default;
 
-	float width = 250;
-	float height = 200;
+	float width = 75;
+	float height = 100;
 
 	float movespeed_modifier = 200;
 	float gravity = 260;
 	float y_velocity = 0;
-	float jump_strength = 200;
+	float jump_strength = 250;
 
 	bool is_jumping = false;
 	bool is_grounded = true;

@@ -92,6 +92,11 @@ private:
 
 	//STUFF WE ADD GOES BELOW HERE FOR CLARITY //
 
+	bool isSpriteColliding(Player* player, GameObject* block);
+	void landOnBlockCheck(Player* player, GameObject* block);
+
+	float collider_tolerance = 10;
+
 	std::unique_ptr<SceneManager> scene_manager = nullptr;
 	std::unique_ptr<StateMachine> state_machine = nullptr;
 

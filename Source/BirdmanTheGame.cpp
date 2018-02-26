@@ -65,6 +65,23 @@ void BirdmanTheGame::update(const ASGE::GameTime& ms)
 {
 	player->update(ms);
 
+	if (world_type_state == WorldTypeState::REALWORLD)
+	{
+		for (auto& node : level1_RW.scene_renderables)
+		{
+			landOnBlockCheck(player.get(), node.node_game_object);
+		}
+	}
+
+	else if (world_type_state == WorldTypeState::DREAMWORLD)
+	{
+		for (auto& node : level1_DW.scene_renderables)
+		{
+			landOnBlockCheck(player.get(), node.node_game_object);
+		}
+	}
+
+
 
 }
 
@@ -90,11 +107,13 @@ void BirdmanTheGame::render(const ASGE::GameTime& ms)
 		{
 		case WorldTypeState::REALWORLD:
 		{
+			renderer->renderSprite(*player->getObjectSprite());
 			scene_manager->renderScene(level1_RW, renderer.get());
 			break;
 		}
 		case WorldTypeState::DREAMWORLD:
 		{
+			renderer->renderSprite(*player->getObjectSprite());
 			scene_manager->renderScene(level1_DW, renderer.get());
 			break;
 		}
@@ -131,6 +150,52 @@ void BirdmanTheGame::keyHandler(const ASGE::SharedEventData data)
 	}
 }
 
+
+bool BirdmanTheGame::isSpriteColliding(Player* player, GameObject * blocks)
+{
+	bool x_collide = false;
+	bool y_collide = false;
+
+	if (player->getSpriteX() <= (blocks->getSpriteMaxX() - collider_tolerance)
+		&& player->getSpriteMaxX() >= (blocks->getSpriteX() + collider_tolerance))
+	{
+		x_collide = true;
+	}
+
+	if (player->getSpriteY() <= (blocks->getSpriteMaxY() - collider_tolerance)
+		&& player->getSpriteMaxY() >= (blocks->getSpriteY() + collider_tolerance))
+	{
+		y_collide = true;
+	}
+
+
+	if (x_collide && y_collide)
+	{
+		x_collide = false;
+		y_collide = false;
+		return true;
+	}
+
+	return false;
+}
+
+void BirdmanTheGame::landOnBlockCheck(Player* player, GameObject* block)
+{
+	if (isSpriteColliding(player, block))
+	{
+		if (player->getSpriteMaxY() <= block->getSpriteY() - 1|| player->getSpriteMaxY() >= block->getSpriteY() + 1)
+		{
+			jump_state = PlayerJumpState::JUMP_OFF;
+			player->setIsJumping(false);
+			player->yVelocity(0);
+		}
+
+		else
+		{
+			move_state = PlayerMoveState::NONE;
+		}
+	}
+}
 
 
 void BirdmanTheGame::Level1()
@@ -186,11 +251,6 @@ void BirdmanTheGame::Level1()
 	block_node9.node_game_object->getObjectSprite()->yPos(220);
 
 	block_node9.z_order = 2;
-
-
-
-	scene_manager->addNodeToScene(level1_RW, player_node);
-	scene_manager->addNodeToScene(level1_DW, player_node);
 
 
 	scene_manager->addNodeToScene(level1_RW, block_node1);

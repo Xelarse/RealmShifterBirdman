@@ -11,7 +11,7 @@ void Player::init(ASGE::Renderer * renderer)
 	object_sprite = renderer->createUniqueSprite();
 	object_sprite->loadTexture("..\\..\\Resources\\Cloud.png");
 
-	object_sprite->xPos(250);
+	object_sprite->xPos(-10);
 	object_sprite->yPos(520);
 	object_sprite->width(width);
 	object_sprite->height(height);
@@ -39,12 +39,20 @@ void Player::update(const ASGE::GameTime& ms)
 		jump(ms);
 	}
 
-	if (is_jumping && isGrounded())
+	if (is_jumping && isOnFloor())
 	{
 		y_velocity = 0;
 		is_jumping = false;
 		is_grounded = true;
 		jump_state = PlayerJumpState::JUMP_OFF;
+	}
+
+
+	object_sprite->yPos(object_sprite->yPos() + y_velocity * (ms.delta_time.count() / 1000));
+
+	if (!isOnFloor())
+	{
+		y_velocity += gravity * ms.delta_time.count() / 1000;
 	}
 }
 
@@ -67,14 +75,21 @@ void Player::jump(const ASGE::GameTime & ms)
 		is_jumping = true;
 		is_grounded = false;
 		y_velocity = -jump_strength;
+		object_sprite->yPos(object_sprite->yPos() - 2);
 	}
-
-	object_sprite->yPos(object_sprite->yPos() + y_velocity * (ms.delta_time.count() /1000));
-
-	y_velocity += gravity * ms.delta_time.count() / 1000;
 }
 
-bool Player::isGrounded()
+float Player::yVelocity()
+{
+	return y_velocity;
+}
+
+void Player::yVelocity(float vel)
+{
+	y_velocity = vel;
+}
+
+bool Player::isOnFloor()
 {
 	if (object_sprite->yPos() >= 720 - (height))
 	{
@@ -86,4 +101,14 @@ bool Player::isGrounded()
 	{
 		return false;
 	}
+}
+
+void Player::setIsGrounded(bool type)
+{
+	is_grounded = type;
+}
+
+void Player::setIsJumping(bool type)
+{
+	is_jumping = type;
 }
