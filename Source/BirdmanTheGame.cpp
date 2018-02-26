@@ -183,9 +183,11 @@ void BirdmanTheGame::landOnBlockCheck(Player* player, GameObject* block)
 {
 	if (isSpriteColliding(player, block))
 	{
-		if (player->getSpriteMaxY() == block->getSpriteY())
+		if (player->getSpriteMaxY() <= block->getSpriteY() - 5 || player->getSpriteMaxY() >= block->getSpriteY() + 5)
 		{
-			player->setIsGrounded(true);
+			jump_state = PlayerJumpState::JUMP_OFF;
+			player->setIsJumping(false);
+			player->yVelocity(0);
 		}
 
 		else
@@ -193,15 +195,6 @@ void BirdmanTheGame::landOnBlockCheck(Player* player, GameObject* block)
 			move_state = PlayerMoveState::NONE;
 		}
 	}
-
-	else
-	{
-		if (player->isGrounded() && player->getSpriteMaxY() != 720)
-		{
-			player->setIsGrounded(false);
-		}
-	}
-
 }
 
 
