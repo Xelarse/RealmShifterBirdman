@@ -8,10 +8,13 @@ std::atomic<PauseState> pause_state = PauseState::HOVER_CONTINUE;
 std::atomic<PlayerJumpState> jump_state = PlayerJumpState::JUMP_OFF;
 std::atomic<PlayerMoveState> move_state = PlayerMoveState::NONE;
 std::atomic<GameoverState> gameover_state = GameoverState::HOVER_MENU;
+std::atomic<LevelSelect> level_state = LevelSelect::LEVEL1;
+std::atomic<WorldTypeState> world_type_state = WorldTypeState::REALWORLD;
 
 /**
 *   @brief   Takes input and passes into certain functions depending on overall state.
 */
+
 void StateMachine::passInInputToStateMachine(int input_key)
 {
 	switch (overall_state)
@@ -73,6 +76,9 @@ bool StateMachine::isGameActionStateDefault() const
 *	@details	Left, right, up and down arrow keys switch between which menu option it hovers
 and enter confirms the selection
 */
+
+
+
 void StateMachine::processMenuState(int input_key)
 {
 	switch (input_key)
@@ -157,6 +163,7 @@ void StateMachine::processPauseState(int input_key)
 *   @details Arrow keys control which direction is set on game_action,
 escape switches game into Pause.
 */
+
 void StateMachine::processGameState(int input_key)
 {
 	switch (input_key)
@@ -236,5 +243,25 @@ void StateMachine::processGameoverState(int input_key)
 			}
 			break;
 		}
+	}
+}
+
+void StateMachine::processLevelSelect(int input_key)
+{
+	
+}
+
+void StateMachine::processWorldTypeState(int input_key)
+{
+	switch (input_key)
+	{
+	case ASGE::KEYS::KEY_J:
+	{
+		world_type_state = WorldTypeState::REALWORLD;
+	}
+	case ASGE::KEYS::KEY_K:
+	{
+		world_type_state = WorldTypeState::DREAMWORLD;
+	}
 	}
 }
