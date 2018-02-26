@@ -65,6 +65,7 @@ void BirdmanTheGame::update(const ASGE::GameTime& ms)
 {
 	player->update(ms);
 
+
 }
 
 void BirdmanTheGame::render(const ASGE::GameTime& ms)

@@ -12,6 +12,8 @@ public:
 	void resetGameActionState() const;
 	bool isGameActionStateDefault() const;
 
+
+
 private:
 
 	void processMenuState(int input_key);
@@ -19,13 +21,17 @@ private:
 	void processGameState(int input_key);
 	void processGameoverState(int input_key);
 	void processLevelSelect(int input_key);
-	void processWorldTypeState(int input_key);
+	
+
 };
 
 enum class LevelSelect
 {
 	NONE = 0,
-	LEVEL1
+	LEVEL1,
+	LEVEL2,
+	LEVEL3,
+	LEVEL4
 };
 
 enum class WorldTypeState
