@@ -31,13 +31,13 @@ public:
 private:
 	Player() = default;
 
-	float width = 250;
+	float width = 150;
 	float height = 200;
 
 	float movespeed_modifier = 200;
 	float gravity = 260;
 	float y_velocity = 0;
-	float jump_strength = 200;
+	float jump_strength = 250;
 
 	bool is_jumping = false;
 	bool is_grounded = true;
