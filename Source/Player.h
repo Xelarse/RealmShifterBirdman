@@ -35,7 +35,7 @@ public:
 private:
 	Player() = default;
 
-	float width = 150;
+	float width = 75;
 	float height = 100;
 
 	float movespeed_modifier = 200;
