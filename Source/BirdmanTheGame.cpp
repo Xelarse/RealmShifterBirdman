@@ -123,7 +123,10 @@ void BirdmanTheGame::keyHandler(const ASGE::SharedEventData data)
 
 	if (action == ASGE::KEYS::KEY_RELEASED && move_state != PlayerMoveState::NONE)
 	{
-		move_state = PlayerMoveState::NONE;
+		if (key == ASGE::KEYS::KEY_LEFT || key == ASGE::KEYS::KEY_RIGHT)
+		{
+			move_state = PlayerMoveState::NONE;
+		}
 	}
 }
 
