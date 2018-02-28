@@ -107,6 +107,10 @@ private:
 
 
 	SceneManager::SCENE test_scene;
+	SceneManager::SCENE menu_scene;
+	SceneManager::SCENE pause_scene;
+	SceneManager::SCENE gameover_scene;
+
 	SceneManager::SCENE level1_DW;
 	SceneManager::SCENE level1_RW;
 
