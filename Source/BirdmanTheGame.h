@@ -89,12 +89,14 @@ private:
 	*/
 	void keyHandler(const ASGE::SharedEventData data);
 
+
 	void Level1();
 
 	//bool initAudioEngine();
 
 
 	//STUFF WE ADD GOES BELOW HERE FOR CLARITY //
+
 
 private:
 	std::unique_ptr<ASGE::Sprite> backdrop = nullptr;
@@ -103,8 +105,15 @@ private:
 
 	//STUFF WE ADD GOES BELOW HERE FOR CLARITY //
 
+	void initiliseMenus(ASGE::Renderer* renderer);
+
 	bool isSpriteColliding(Player* player, GameObject* block);
 	void landOnBlockCheck(Player* player, GameObject* block);
+
+	void renderGameState(ASGE::Renderer* renderer);
+	void renderPauseState(ASGE::Renderer* renderer);
+	void renderMenuState(ASGE::Renderer* renderer);
+	void renderGameOverState(ASGE::Renderer* renderer);
 
 	float collider_tolerance = 10;
 
@@ -116,26 +125,37 @@ private:
 	
 
 	//for testing currently
+
 	std::unique_ptr<Player> player = nullptr;
 	std::unique_ptr<BlockPool> block_pool = nullptr;
 
+	SceneManager::SCENE gameover_scene;
+	SceneManager::NODE player_node;
 
-
-	SceneManager::SCENE test_scene;
+	//Level 1 scene stuff
 	SceneManager::SCENE level1_DW;
 	SceneManager::SCENE level1_RW;
 
+	SceneManager::NODE lv1_block_node1;
+	SceneManager::NODE lv1_block_node2;
+	SceneManager::NODE lv1_block_node3;
+	SceneManager::NODE lv1_block_node4;
+	SceneManager::NODE lv1_block_node5;
+	SceneManager::NODE lv1_block_node6;
+	SceneManager::NODE lv1_block_node7;
+	SceneManager::NODE lv1_block_node8;
+	SceneManager::NODE lv1_block_node9;
 
-	SceneManager::NODE player_node;
-	SceneManager::NODE block_node1;
-	SceneManager::NODE block_node2;
-	SceneManager::NODE block_node3;
-	SceneManager::NODE block_node4;
-	SceneManager::NODE block_node5;
-	SceneManager::NODE block_node6;
-	SceneManager::NODE block_node7;
-	SceneManager::NODE block_node8;
-	SceneManager::NODE block_node9;
+	//Menu scene stuff
+	SceneManager::SCENE menu_scene;
+	SceneManager::NODE menu_background_node;
+	SceneManager::NODE menu_text_node;
+	std::unique_ptr<ASGE::Sprite> background_sprite;
 
+	//Pause scene stuff
+	SceneManager::SCENE pause_scene;
+	SceneManager::NODE pause_background_node;
+	SceneManager::NODE pause_text_node;
+	std::unique_ptr<ASGE::Sprite> pause_background;
 };
 
