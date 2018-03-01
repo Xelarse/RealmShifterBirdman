@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "LevelBlocks.h"
 #include "BlockPool.h"
+//#include "Levels.h"
 
 using namespace irrklang;
 
@@ -90,13 +91,10 @@ private:
 	void keyHandler(const ASGE::SharedEventData data);
 
 
-	void Level1();
-
-	//bool initAudioEngine();
-
-
 	//STUFF WE ADD GOES BELOW HERE FOR CLARITY //
 
+
+	//bool initAudioEngine();
 
 private:
 	std::unique_ptr<ASGE::Sprite> backdrop = nullptr;
@@ -105,7 +103,14 @@ private:
 
 	//STUFF WE ADD GOES BELOW HERE FOR CLARITY //
 
+
 	void initiliseMenus(ASGE::Renderer* renderer);
+
+	void levelSelection();
+
+	void Level1();
+	void Level2();
+	void Level3();
 
 	bool isSpriteColliding(Player* player, GameObject* block);
 	void landOnBlockCheck(Player* player, GameObject* block);
@@ -119,6 +124,7 @@ private:
 
 	std::unique_ptr<SceneManager> scene_manager = nullptr;
 	std::unique_ptr<StateMachine> state_machine = nullptr;
+	//std::unique_ptr<Levels> levels = nullptr;
 
 	//std::unique_ptr<irrKlang::ISoundEngine> audio_engine = nullptr;
 
@@ -135,6 +141,10 @@ private:
 	//Level 1 scene stuff
 	SceneManager::SCENE level1_DW;
 	SceneManager::SCENE level1_RW;
+	SceneManager::SCENE level2_DW;
+	SceneManager::SCENE level2_RW;
+	SceneManager::SCENE level3_DW;
+	SceneManager::SCENE level3_RW;
 
 	SceneManager::NODE lv1_block_node1;
 	SceneManager::NODE lv1_block_node2;
