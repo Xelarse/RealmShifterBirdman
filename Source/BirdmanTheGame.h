@@ -80,10 +80,10 @@ private:
 	*/
 	void keyHandler(const ASGE::SharedEventData data);
 
-	void Level1();
-
 
 	//STUFF WE ADD GOES BELOW HERE FOR CLARITY //
+
+	void Level1();
 
 private:
 	std::unique_ptr<ASGE::Sprite> backdrop = nullptr;
@@ -91,6 +91,8 @@ private:
 							       The callback ID assigned by the game engine. */
 
 	//STUFF WE ADD GOES BELOW HERE FOR CLARITY //
+
+	void initiliseMenus(ASGE::Renderer* renderer);
 
 	bool isSpriteColliding(Player* player, GameObject* block);
 	void landOnBlockCheck(Player* player, GameObject* block);
@@ -106,25 +108,30 @@ private:
 
 
 
-	SceneManager::SCENE test_scene;
-	SceneManager::SCENE menu_scene;
 	SceneManager::SCENE pause_scene;
 	SceneManager::SCENE gameover_scene;
+	SceneManager::NODE player_node;
 
+	//Level 1 scene stuff
 	SceneManager::SCENE level1_DW;
 	SceneManager::SCENE level1_RW;
 
+	SceneManager::NODE lv1_block_node1;
+	SceneManager::NODE lv1_block_node2;
+	SceneManager::NODE lv1_block_node3;
+	SceneManager::NODE lv1_block_node4;
+	SceneManager::NODE lv1_block_node5;
+	SceneManager::NODE lv1_block_node6;
+	SceneManager::NODE lv1_block_node7;
+	SceneManager::NODE lv1_block_node8;
+	SceneManager::NODE lv1_block_node9;
 
-	SceneManager::NODE player_node;
-	SceneManager::NODE block_node1;
-	SceneManager::NODE block_node2;
-	SceneManager::NODE block_node3;
-	SceneManager::NODE block_node4;
-	SceneManager::NODE block_node5;
-	SceneManager::NODE block_node6;
-	SceneManager::NODE block_node7;
-	SceneManager::NODE block_node8;
-	SceneManager::NODE block_node9;
 
+
+	//Menu scene stuff
+	SceneManager::SCENE menu_scene;
+	SceneManager::NODE menu_background_node;
+	SceneManager::NODE menu_text_node;
+	std::unique_ptr<ASGE::Sprite> background_sprite;
 };
 

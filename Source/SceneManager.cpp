@@ -9,7 +9,20 @@ void SceneManager::renderScene(SCENE& scene, ASGE::Renderer * renderer)
 {
 	for (auto& node : scene.scene_renderables)
 	{
-		renderer->renderSprite(*node.node_game_object->getObjectSprite(), node.z_order);
+		if (node.node_game_object != nullptr)
+		{
+			renderer->renderSprite(*node.node_game_object->getObjectSprite(), node.z_order);
+		}
+
+		else if (node.node_sprite != nullptr)
+		{
+			renderer->renderSprite(*node.node_sprite, node.z_order);
+		}
+
+		else if (node.node_string != "")
+		{
+			renderer->renderText(node.node_string, node.string_x, node.string_y);
+		}
 	}
 }
 
