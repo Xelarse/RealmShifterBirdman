@@ -11,13 +11,15 @@ enum class BlockTypes
 class LevelBlocks : public GameObject
 {
 public:
-	LevelBlocks(ASGE::Renderer* renderer, BlockTypes type, float dim_x, float dim_y);
+	LevelBlocks(ASGE::Renderer* renderer, BlockTypes type, float dim_x, float dim_y, bool is_end_block);
 	~LevelBlocks() = default;
 
 
 	void init(ASGE::Renderer * renderer) override;
 	void update(const ASGE::GameTime& ms) override;
 
+
+	bool getIsEndBlock();
 	bool getIsUsed();
 	void setIsUsed(bool option);
 
@@ -29,6 +31,7 @@ private:
 	float height;
 	BlockTypes block_type;
 	bool is_used = false;
+	bool end_block = false;
 };
 
 
