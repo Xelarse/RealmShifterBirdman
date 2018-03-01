@@ -1,7 +1,13 @@
 #include <Engine\InputEvents.h>
+#include <irrKlang.h>
 
 #include "BirdmanTheGame.h"
 #include "GameFont.h"
+
+
+
+
+
 
 namespace {
 	const float BACKGROUND_LAYER = 0.0f;
@@ -12,6 +18,7 @@ BirdmanTheGame::~BirdmanTheGame()
 {
 	this->inputs->unregisterCallback(key_handler_id);
 	LoadedGameFont::loaded_fonts.clear();
+	//audio_engine->stopAllSounds();
 }
 
 bool BirdmanTheGame::init()
@@ -44,6 +51,8 @@ bool BirdmanTheGame::init()
 
 	//----------------------------- OUR STUFF GOES BELOW HERE ---------------------------
 
+	
+
 	scene_manager = std::make_unique<SceneManager>();
 	state_machine = std::make_unique<StateMachine>();
 	block_pool = std::make_unique<BlockPool>(renderer.get());
@@ -52,7 +61,11 @@ bool BirdmanTheGame::init()
 	player_node.node_game_object = player.get();
 	player_node.z_order = 1;
 
+
+
 	Level1();
+
+	//initAudioEngine();
 
 
 	scene_manager->addNodeToScene(test_scene, player_node);
@@ -60,6 +73,18 @@ bool BirdmanTheGame::init()
 
 	return true;
 }
+
+//bool BirdmanTheGame::initAudioEngine()
+//{
+//	using namespace irrklang;
+//	audio_engine.reset(createIrrKlangDevice());
+//	
+//	if (!audio_engine)
+//	{
+//		return false;
+//	}
+//	return true;
+//}
 
 void BirdmanTheGame::update(const ASGE::GameTime& ms)
 {

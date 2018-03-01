@@ -1,6 +1,8 @@
 #pragma once
 #include <Engine\OGLGame.h>
 #include <Engine\Sprite.h>
+#include <irrKlang.h>
+#include <iostream>
 
 
 #include "SceneManager.h"
@@ -9,8 +11,13 @@
 #include "LevelBlocks.h"
 #include "BlockPool.h"
 
+using namespace irrklang;
+
 namespace ASGE {
 	struct GameTime;
+}
+namespace irrKlang {
+	class ISoundEngine;
 }
 
 /**
@@ -25,6 +32,8 @@ class BirdmanTheGame
 	: public ASGE::OGLGame
 {
 public:
+
+
 	
 	/**
 	*  Default constructor for game.
@@ -82,6 +91,8 @@ private:
 
 	void Level1();
 
+	//bool initAudioEngine();
+
 
 	//STUFF WE ADD GOES BELOW HERE FOR CLARITY //
 
@@ -99,6 +110,10 @@ private:
 
 	std::unique_ptr<SceneManager> scene_manager = nullptr;
 	std::unique_ptr<StateMachine> state_machine = nullptr;
+
+	//std::unique_ptr<irrKlang::ISoundEngine> audio_engine = nullptr;
+
+	
 
 	//for testing currently
 	std::unique_ptr<Player> player = nullptr;
