@@ -61,23 +61,37 @@ bool BirdmanTheGame::init()
 
 void BirdmanTheGame::update(const ASGE::GameTime& ms)
 {
-	player->update(ms);
-
-	if (world_type_state == WorldTypeState::REALWORLD)
+	switch (overall_state)
 	{
-		for (auto& node : level1_RW.scene_renderables)
+		case OverallState::GAMEPLAY:
 		{
-			landOnBlockCheck(player.get(), node.node_game_object);
+			player->update(ms);
+
+			if (world_type_state == WorldTypeState::REALWORLD)
+			{
+				for (auto& node : level1_RW.scene_renderables)
+				{
+					landOnBlockCheck(player.get(), node.node_game_object);
+				}
+			}
+
+			else if (world_type_state == WorldTypeState::DREAMWORLD)
+			{
+				for (auto& node : level1_DW.scene_renderables)
+				{
+					landOnBlockCheck(player.get(), node.node_game_object);
+				}
+			}
+
+			break;
+		}
+
+		case OverallState::EXIT:
+		{
+			exit = true;
 		}
 	}
-
-	else if (world_type_state == WorldTypeState::DREAMWORLD)
-	{
-		for (auto& node : level1_DW.scene_renderables)
-		{
-			landOnBlockCheck(player.get(), node.node_game_object);
-		}
-	}
+	
 
 
 
@@ -87,41 +101,28 @@ void BirdmanTheGame::render(const ASGE::GameTime& ms)
 {
 	switch (overall_state)
 	{
-	case OverallState::MENU:
-	{
-		scene_manager->renderScene(menu_scene, renderer.get());
-		break;
-	}
-
-	case OverallState::PAUSE:
-	{
-		break;
-	}
-
-	case OverallState::GAMEPLAY:
-	{
-		//default start state
-		switch (world_type_state)
+		case OverallState::MENU:
 		{
-		case WorldTypeState::REALWORLD:
-		{
-			renderer->renderSprite(*player->getObjectSprite());
-			scene_manager->renderScene(level1_RW, renderer.get());
+			renderMenuState(renderer.get());
 			break;
 		}
-		case WorldTypeState::DREAMWORLD:
+
+		case OverallState::PAUSE:
 		{
-			renderer->renderSprite(*player->getObjectSprite());
-			scene_manager->renderScene(level1_DW, renderer.get());
+			renderPauseState(renderer.get());
 			break;
 		}
-		break;
+
+		case OverallState::GAMEPLAY:
+		{
+			renderGameState(renderer.get());
+			break;
 		}
-	}
-	case OverallState::GAMEOVER:
-	{
-		break;
-	}
+		case OverallState::GAMEOVER:
+		{
+			renderGameOverState(renderer.get());
+			break;
+		}
 	}
 	
 }
@@ -152,15 +153,37 @@ void BirdmanTheGame::keyHandler(const ASGE::SharedEventData data)
 void BirdmanTheGame::initiliseMenus(ASGE::Renderer* renderer)
 {
 	//Main menu init
+	menu_scene.scene_renderables.reserve(3);
+
 	background_sprite = renderer->createUniqueSprite();
 	background_sprite->loadTexture("..\\..\\Resources\\mainMenuBackground.jpg");
 	menu_background_node.node_sprite = background_sprite.get();
 	menu_background_node.z_order = 1;
 	scene_manager->addNodeToScene(menu_scene, menu_background_node);
 
-	menu_text_node.node_string = "Start!";
-	menu_text_node.string_x = 700;
-	menu_text_node.string_y = 500;
+	menu_text_node.node_string = "Press enter to start! \n \n Press left or right to cycle through the menu";
+	menu_text_node.string_x = 300;
+	menu_text_node.string_y = 600;
+	menu_text_node.string_scale = 1.5;
+	menu_text_node.string_colour = ASGE::COLOURS::LIGHTGREEN;
+	scene_manager->addNodeToScene(menu_scene, menu_text_node);
+
+	//Pause menu init
+	pause_scene.scene_renderables.reserve(3);
+
+	pause_background = renderer->createUniqueSprite();
+	pause_background->loadTexture("..\\..\\Resources\\pauseBackground.jpg");
+	pause_background_node.node_sprite = pause_background.get();
+	pause_background_node.z_order = 2;
+	scene_manager->addNodeToScene(pause_scene, pause_background_node);
+
+	pause_text_node.node_string = "Press enter to return to menu \n \n Press left or right to cycle through the menu";
+	pause_text_node.string_x = 300;
+	pause_text_node.string_y = 360;
+	pause_text_node.string_scale = 1.5;
+	pause_text_node.string_colour = ASGE::COLOURS::LIGHTGREEN;
+	pause_text_node.z_order = 1;
+	scene_manager->addNodeToScene(pause_scene, pause_text_node);
 }
 
 bool BirdmanTheGame::isSpriteColliding(Player* player, GameObject * blocks)
@@ -207,6 +230,69 @@ void BirdmanTheGame::landOnBlockCheck(Player* player, GameObject* block)
 			move_state = PlayerMoveState::NONE;
 		}
 	}
+}
+
+void BirdmanTheGame::renderGameState(ASGE::Renderer * renderer)
+{
+	switch (world_type_state)
+	{
+		case WorldTypeState::REALWORLD:
+		{
+			scene_manager->renderScene(level1_RW, renderer);
+			break;
+		}
+		case WorldTypeState::DREAMWORLD:
+		{
+			scene_manager->renderScene(level1_DW, renderer);
+			break;
+		}
+	}
+
+	renderer->renderSprite(*player->getObjectSprite());
+}
+
+void BirdmanTheGame::renderPauseState(ASGE::Renderer * renderer)
+{
+	if (pause_state == PauseState::HOVER_CONTINUE)
+	{
+		pause_scene.scene_renderables.pop_back();
+		pause_text_node.node_string = "Hit enter to jump back into the game! \n \n Press left or right to cycle through the menu";
+		scene_manager->addNodeToScene(pause_scene, pause_text_node);
+	}
+
+	else if (pause_state == PauseState::HOVER_QUIT)
+	{
+		pause_scene.scene_renderables.pop_back();
+		pause_text_node.node_string = "Hit enter to exit! \n \n Press left or right to cycle through the menu";
+		scene_manager->addNodeToScene(pause_scene, pause_text_node);
+	}
+
+
+	scene_manager->renderScene(pause_scene, renderer);
+}
+
+void BirdmanTheGame::renderMenuState(ASGE::Renderer * renderer)
+{
+	if (menu_state == MenuState::HOVER_START)
+	{
+		menu_scene.scene_renderables.pop_back();
+		menu_text_node.node_string = "Press enter to start! \n \n Press left or right to cycle through the menu";
+		scene_manager->addNodeToScene(menu_scene, menu_text_node);
+	}
+
+	else if (menu_state == MenuState::HOVER_EXIT)
+	{
+		menu_scene.scene_renderables.pop_back();
+		menu_text_node.node_string = "Press enter to exit! \n \n Press left or right to cycle through the menu";
+		scene_manager->addNodeToScene(menu_scene, menu_text_node);
+	}
+
+
+	scene_manager->renderScene(menu_scene, renderer);
+}
+
+void BirdmanTheGame::renderGameOverState(ASGE::Renderer * renderer)
+{
 }
 
 
@@ -270,6 +356,4 @@ void BirdmanTheGame::Level1()
 	scene_manager->addNodeToScene(level1_DW, lv1_block_node7);
 	scene_manager->addNodeToScene(level1_RW, lv1_block_node8);
 	scene_manager->addNodeToScene(level1_RW, lv1_block_node9);
-											 
-
 }

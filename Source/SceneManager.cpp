@@ -21,7 +21,7 @@ void SceneManager::renderScene(SCENE& scene, ASGE::Renderer * renderer)
 
 		else if (node.node_string != "")
 		{
-			renderer->renderText(node.node_string, node.string_x, node.string_y);
+			renderer->renderText(node.node_string, node.string_x, node.string_y, node.string_scale, node.string_colour, node.z_order);
 		}
 	}
 }
