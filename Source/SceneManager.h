@@ -14,6 +14,13 @@ class SceneManager
 	struct NODE
 	{
 		GameObject* node_game_object = nullptr;
+		ASGE::Sprite* node_sprite = nullptr;
+		std::string node_string = "";
+
+		int string_x = 0;
+		int string_y = 0;
+		float string_scale = 1.0;
+		ASGE::Colour string_colour = ASGE::COLOURS::WHITE;
 
 		//The closer the number to 0 the higher it will be rendered into the scene
 		int z_order = -1;
