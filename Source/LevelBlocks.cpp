@@ -1,12 +1,12 @@
 #include "LevelBlocks.h"
 
-LevelBlocks::LevelBlocks(ASGE::Renderer* renderer, BlockTypes type, float dim_x, float dim_y, bool is_end_block)
+LevelBlocks::LevelBlocks(ASGE::Renderer* renderer, BlockTypes type, float dim_x, float dim_y)
 {
 	width = dim_x;
 	height = dim_y;
 	block_type = type;
 	init(renderer);
-	end_block = is_end_block;
+
 }
 
 void LevelBlocks::init(ASGE::Renderer * renderer)
@@ -35,10 +35,6 @@ void LevelBlocks::update(const ASGE::GameTime& ms)
 	//Add update logic here if required
 }
 
-bool LevelBlocks::getIsEndBlock()
-{
-	return end_block;
-}
 
 bool LevelBlocks::getIsUsed()
 {

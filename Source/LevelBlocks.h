@@ -11,7 +11,7 @@ enum class BlockTypes
 class LevelBlocks : public GameObject
 {
 public:
-	LevelBlocks(ASGE::Renderer* renderer, BlockTypes type, float dim_x, float dim_y, bool is_end_block);
+	LevelBlocks(ASGE::Renderer* renderer, BlockTypes type, float dim_x, float dim_y);
 	~LevelBlocks() = default;
 
 

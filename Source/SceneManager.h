@@ -26,6 +26,7 @@ class SceneManager
 
 		//The closer the number to 0 the higher it will be rendered into the scene
 		int z_order = -1;
+		bool end_block = false;
 	};
 
 	/*Used to render things into the game, input a Scene that is filled with nodes into the scene

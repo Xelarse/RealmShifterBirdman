@@ -66,7 +66,7 @@ bool BirdmanTheGame::init()
 	initiliseMenus(renderer.get());
 	Level1();
 	Level2();
-	Level3();
+	//Level3();
 	
 	return true;
 }
@@ -219,7 +219,7 @@ void BirdmanTheGame::levelSelection()
 			}
 		}
 	}
-	if (level_select == LevelSelect::LEVEL2)
+	else if (level_select == LevelSelect::LEVEL2)
 	{
 
 		if (world_type_state == WorldTypeState::REALWORLD)
@@ -238,7 +238,7 @@ void BirdmanTheGame::levelSelection()
 			}
 		}
 	}
-	if (level_select == LevelSelect::LEVEL3)
+	else if (level_select == LevelSelect::LEVEL3)
 	{
 
 		if (world_type_state == WorldTypeState::REALWORLD)
@@ -281,6 +281,12 @@ bool BirdmanTheGame::isSpriteColliding(Player* player, GameObject * blocks)
 	{
 		x_collide = false;
 		y_collide = false;
+
+		if (blocks->getIsEndBlock() == true)
+		{
+			level_select = LevelSelect::LEVEL2;
+		}
+
 		return true;
 	}
 
@@ -324,7 +330,7 @@ void BirdmanTheGame::renderGameState(ASGE::Renderer * renderer)
 		}
 		}
 	}
-	if (level_select == LevelSelect::LEVEL2)
+	else if (level_select == LevelSelect::LEVEL2)
 	{
 
 		switch (world_type_state)
@@ -341,7 +347,7 @@ void BirdmanTheGame::renderGameState(ASGE::Renderer * renderer)
 		}
 		}
 	}
-	if (level_select == LevelSelect::LEVEL3)
+	else if (level_select == LevelSelect::LEVEL3)
 	{
 
 		switch (world_type_state)
@@ -455,6 +461,7 @@ void BirdmanTheGame::Level1()
 	lv1_block_node9.node_game_object = block_pool->getNewRWBlock();
 	lv1_block_node9.node_game_object->getObjectSprite()->xPos(1080);
 	lv1_block_node9.node_game_object->getObjectSprite()->yPos(220);
+	lv1_block_node9.node_game_object->setIsEndBlock(true);
 	lv1_block_node9.z_order = 2;
 
 
@@ -471,53 +478,54 @@ void BirdmanTheGame::Level1()
 
 void BirdmanTheGame::Level2()
 {
-	lv1_block_node1.node_game_object = block_pool->getNewRWBlock();
-	lv1_block_node1.node_game_object->getObjectSprite()->xPos(50);
-	lv1_block_node1.node_game_object->getObjectSprite()->yPos(620);
-	lv1_block_node1.z_order = 2;
+	lv2_block_node1.node_game_object = block_pool->getNewRWBlock();
+	lv2_block_node1.node_game_object->getObjectSprite()->xPos(1);
+	lv2_block_node1.node_game_object->getObjectSprite()->yPos(620);
+	lv2_block_node1.z_order = 2;
 
-	lv1_block_node2.node_game_object = block_pool->getNewDWBlock();
-	lv1_block_node2.node_game_object->getObjectSprite()->xPos(350);
-	lv1_block_node2.node_game_object->getObjectSprite()->yPos(620);
-	lv1_block_node2.z_order = 2;
+	lv2_block_node2.node_game_object = block_pool->getNewDWBlock();
+	lv2_block_node2.node_game_object->getObjectSprite()->xPos(1);
+	lv2_block_node2.node_game_object->getObjectSprite()->yPos(620);
+	lv2_block_node2.z_order = 2;
 
-	lv1_block_node3.node_game_object = block_pool->getNewRWBlock();
-	lv1_block_node3.node_game_object->getObjectSprite()->xPos(500);
-	lv1_block_node3.node_game_object->getObjectSprite()->yPos(520);
-	lv1_block_node3.node_game_object->getObjectSprite()->width(50);
-	lv1_block_node3.z_order = 2;
+	lv2_block_node3.node_game_object = block_pool->getNewRWBlock();
+	lv2_block_node3.node_game_object->getObjectSprite()->xPos(1);
+	lv2_block_node3.node_game_object->getObjectSprite()->yPos(520);
+	lv2_block_node3.node_game_object->getObjectSprite()->width(50);
+	lv2_block_node3.z_order = 2;
 
-	lv1_block_node4.node_game_object = block_pool->getNewDWBlock();
-	lv1_block_node4.node_game_object->getObjectSprite()->xPos(600);
-	lv1_block_node4.node_game_object->getObjectSprite()->yPos(420);
-	lv1_block_node4.node_game_object->getObjectSprite()->width(50);
-	lv1_block_node4.z_order = 2;
+	lv2_block_node4.node_game_object = block_pool->getNewDWBlock();
+	lv2_block_node4.node_game_object->getObjectSprite()->xPos(1);
+	lv2_block_node4.node_game_object->getObjectSprite()->yPos(420);
+	lv2_block_node4.node_game_object->getObjectSprite()->width(50);
+	lv2_block_node4.z_order = 2;
 
-	lv1_block_node5.node_game_object = block_pool->getNewRWBlock();
-	lv1_block_node5.node_game_object->getObjectSprite()->xPos(580);
-	lv1_block_node5.node_game_object->getObjectSprite()->yPos(320);
-	lv1_block_node5.node_game_object->getObjectSprite()->width(500);
-	lv1_block_node5.z_order = 2;
+	lv2_block_node5.node_game_object = block_pool->getNewRWBlock();
+	lv2_block_node5.node_game_object->getObjectSprite()->xPos(1);
+	lv2_block_node5.node_game_object->getObjectSprite()->yPos(320);
+	lv2_block_node5.node_game_object->getObjectSprite()->width(500);
+	lv2_block_node5.z_order = 2;
 
-	lv1_block_node6.node_game_object = block_pool->getNewRWBlock();
-	lv1_block_node6.node_game_object->getObjectSprite()->xPos(280);
-	lv1_block_node6.node_game_object->getObjectSprite()->yPos(320);
-	lv1_block_node6.z_order = 2;
+	lv2_block_node6.node_game_object = block_pool->getNewRWBlock();
+	lv2_block_node6.node_game_object->getObjectSprite()->xPos(1);
+	lv2_block_node6.node_game_object->getObjectSprite()->yPos(320);
+	lv2_block_node6.z_order = 2;
 
-	lv1_block_node7.node_game_object = block_pool->getNewDWBlock();
-	lv1_block_node7.node_game_object->getObjectSprite()->xPos(200);
-	lv1_block_node7.node_game_object->getObjectSprite()->yPos(220);
-	lv1_block_node7.z_order = 2;
+	lv2_block_node7.node_game_object = block_pool->getNewDWBlock();
+	lv2_block_node7.node_game_object->getObjectSprite()->xPos(1);
+	lv2_block_node7.node_game_object->getObjectSprite()->yPos(220);
+	lv2_block_node7.z_order = 2;
 
-	lv1_block_node8.node_game_object = block_pool->getNewRWBlock();
-	lv1_block_node8.node_game_object->getObjectSprite()->xPos(830);
-	lv1_block_node8.node_game_object->getObjectSprite()->yPos(120);
-	lv1_block_node8.z_order = 2;
+	lv2_block_node8.node_game_object = block_pool->getNewRWBlock();
+	lv2_block_node8.node_game_object->getObjectSprite()->xPos(1);
+	lv2_block_node8.node_game_object->getObjectSprite()->yPos(120);
+	lv2_block_node8.z_order = 2;
 
-	lv1_block_node9.node_game_object = block_pool->getNewRWBlock();
-	lv1_block_node9.node_game_object->getObjectSprite()->xPos(1080);
-	lv1_block_node9.node_game_object->getObjectSprite()->yPos(220);
-	lv1_block_node9.z_order = 2;
+	lv2_block_node9.node_game_object = block_pool->getNewRWBlock();
+	lv2_block_node9.node_game_object->getObjectSprite()->xPos(1);
+	lv2_block_node9.node_game_object->getObjectSprite()->yPos(220);
+	lv2_block_node9.node_game_object->setIsEndBlock(true);
+	lv2_block_node9.z_order = 2;
 
 
 	scene_manager->addNodeToScene(level2_RW, lv1_block_node1);
@@ -531,64 +539,64 @@ void BirdmanTheGame::Level2()
 	scene_manager->addNodeToScene(level2_RW, lv1_block_node9);
 }
 
-void BirdmanTheGame::Level3()
-{
-	lv1_block_node1.node_game_object = block_pool->getNewRWBlock();
-	lv1_block_node1.node_game_object->getObjectSprite()->xPos(300);
-	lv1_block_node1.node_game_object->getObjectSprite()->yPos(620);
-	lv1_block_node1.z_order = 2;
-
-	lv1_block_node2.node_game_object = block_pool->getNewDWBlock();
-	lv1_block_node2.node_game_object->getObjectSprite()->xPos(350);
-	lv1_block_node2.node_game_object->getObjectSprite()->yPos(620);
-	lv1_block_node2.z_order = 2;
-
-	lv1_block_node3.node_game_object = block_pool->getNewRWBlock();
-	lv1_block_node3.node_game_object->getObjectSprite()->xPos(500);
-	lv1_block_node3.node_game_object->getObjectSprite()->yPos(520);
-	lv1_block_node3.node_game_object->getObjectSprite()->width(50);
-	lv1_block_node3.z_order = 2;
-
-	lv1_block_node4.node_game_object = block_pool->getNewDWBlock();
-	lv1_block_node4.node_game_object->getObjectSprite()->xPos(600);
-	lv1_block_node4.node_game_object->getObjectSprite()->yPos(420);
-	lv1_block_node4.node_game_object->getObjectSprite()->width(50);
-	lv1_block_node4.z_order = 2;
-
-	lv1_block_node5.node_game_object = block_pool->getNewRWBlock();
-	lv1_block_node5.node_game_object->getObjectSprite()->xPos(580);
-	lv1_block_node5.node_game_object->getObjectSprite()->yPos(320);
-	lv1_block_node5.node_game_object->getObjectSprite()->width(500);
-	lv1_block_node5.z_order = 2;
-
-	lv1_block_node6.node_game_object = block_pool->getNewRWBlock();
-	lv1_block_node6.node_game_object->getObjectSprite()->xPos(280);
-	lv1_block_node6.node_game_object->getObjectSprite()->yPos(320);
-	lv1_block_node6.z_order = 2;
-
-	lv1_block_node7.node_game_object = block_pool->getNewDWBlock();
-	lv1_block_node7.node_game_object->getObjectSprite()->xPos(200);
-	lv1_block_node7.node_game_object->getObjectSprite()->yPos(220);
-	lv1_block_node7.z_order = 2;
-
-	lv1_block_node8.node_game_object = block_pool->getNewRWBlock();
-	lv1_block_node8.node_game_object->getObjectSprite()->xPos(830);
-	lv1_block_node8.node_game_object->getObjectSprite()->yPos(120);
-	lv1_block_node8.z_order = 2;
-
-	lv1_block_node9.node_game_object = block_pool->getNewRWBlock();
-	lv1_block_node9.node_game_object->getObjectSprite()->xPos(1080);
-	lv1_block_node9.node_game_object->getObjectSprite()->yPos(220);
-	lv1_block_node9.z_order = 2;
-
-
-	scene_manager->addNodeToScene(level3_RW, lv1_block_node1);
-	scene_manager->addNodeToScene(level3_DW, lv1_block_node2);
-	scene_manager->addNodeToScene(level3_RW, lv1_block_node3);
-	scene_manager->addNodeToScene(level3_DW, lv1_block_node4);
-	scene_manager->addNodeToScene(level3_RW, lv1_block_node5);
-	scene_manager->addNodeToScene(level3_RW, lv1_block_node6);
-	scene_manager->addNodeToScene(level3_DW, lv1_block_node7);
-	scene_manager->addNodeToScene(level3_RW, lv1_block_node8);
-	scene_manager->addNodeToScene(level3_RW, lv1_block_node9);
-}
+//void BirdmanTheGame::Level3()
+//{
+//	lv1_block_node19.node_game_object = block_pool->getNewRWBlock();
+//	lv1_block_node19.node_game_object->getObjectSprite()->xPos(300);
+//	lv1_block_node19.node_game_object->getObjectSprite()->yPos(620);
+//	lv1_block_node19.z_order = 2;
+//
+//	lv1_block_node20.node_game_object = block_pool->getNewDWBlock();
+//	lv1_block_node20.node_game_object->getObjectSprite()->xPos(350);
+//	lv1_block_node20.node_game_object->getObjectSprite()->yPos(620);
+//	lv1_block_node20.z_order = 2;
+//
+//	lv1_block_node21.node_game_object = block_pool->getNewRWBlock();
+//	lv1_block_node21.node_game_object->getObjectSprite()->xPos(500);
+//	lv1_block_node21.node_game_object->getObjectSprite()->yPos(520);
+//	lv1_block_node21.node_game_object->getObjectSprite()->width(50);
+//	lv1_block_node21.z_order = 2;
+//
+//	lv1_block_node22.node_game_object = block_pool->getNewDWBlock();
+//	lv1_block_node22.node_game_object->getObjectSprite()->xPos(600);
+//	lv1_block_node22.node_game_object->getObjectSprite()->yPos(420);
+//	lv1_block_node22.node_game_object->getObjectSprite()->width(50);
+//	lv1_block_node22.z_order = 2;
+//
+//	lv1_block_node23.node_game_object = block_pool->getNewRWBlock();
+//	lv1_block_node23.node_game_object->getObjectSprite()->xPos(580);
+//	lv1_block_node23.node_game_object->getObjectSprite()->yPos(320);
+//	lv1_block_node23.node_game_object->getObjectSprite()->width(500);
+//	lv1_block_node23.z_order = 2;
+//
+//	lv1_block_node24.node_game_object = block_pool->getNewRWBlock();
+//	lv1_block_node24.node_game_object->getObjectSprite()->xPos(280);
+//	lv1_block_node24.node_game_object->getObjectSprite()->yPos(320);
+//	lv1_block_node24.z_order = 2;
+//
+//	lv1_block_node25.node_game_object = block_pool->getNewDWBlock();
+//	lv1_block_node25.node_game_object->getObjectSprite()->xPos(200);
+//	lv1_block_node25.node_game_object->getObjectSprite()->yPos(220);
+//	lv1_block_node25.z_order = 2;
+//
+//	lv1_block_node26.node_game_object = block_pool->getNewRWBlock();
+//	lv1_block_node26.node_game_object->getObjectSprite()->xPos(830);
+//	lv1_block_node26.node_game_object->getObjectSprite()->yPos(120);
+//	lv1_block_node26.z_order = 2;
+//
+//	lv1_block_node27.node_game_object = block_pool->getNewRWBlock();
+//	lv1_block_node27.node_game_object->getObjectSprite()->xPos(1080);
+//	lv1_block_node27.node_game_object->getObjectSprite()->yPos(220);
+//	lv1_block_node27.z_order = 2;
+//
+//
+//	scene_manager->addNodeToScene(level3_RW, lv1_block_node19);
+//	scene_manager->addNodeToScene(level3_DW, lv1_block_node20);
+//	scene_manager->addNodeToScene(level3_RW, lv1_block_node21);
+//	scene_manager->addNodeToScene(level3_DW, lv1_block_node22);
+//	scene_manager->addNodeToScene(level3_RW, lv1_block_node23);
+//	scene_manager->addNodeToScene(level3_RW, lv1_block_node24);
+//	scene_manager->addNodeToScene(level3_DW, lv1_block_node25);
+//	scene_manager->addNodeToScene(level3_RW, lv1_block_node26);
+//	scene_manager->addNodeToScene(level3_RW, lv1_block_node27);
+//}
