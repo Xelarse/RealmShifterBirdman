@@ -344,7 +344,7 @@ void BirdmanTheGame::landOnBlockCheck(Player* player, GameObject* block)
 
 				else if (player->getSpriteOriginX() > block->getSpriteOriginX())
 				{
-					float new_pos = block->getSpriteMaxY();
+					float new_pos = block->getSpriteMaxX();
 					move_state = PlayerMoveState::NONE;
 					player->getObjectSprite()->xPos(new_pos);
 				}
