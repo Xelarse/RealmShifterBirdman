@@ -121,6 +121,7 @@ private:
 	void renderGameOverState(ASGE::Renderer* renderer);
 
 	float collider_tolerance = 10;
+	bool off_block = true;
 
 	std::unique_ptr<SceneManager> scene_manager = nullptr;
 	std::unique_ptr<StateMachine> state_machine = nullptr;
