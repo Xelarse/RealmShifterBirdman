@@ -29,7 +29,7 @@ enum class LevelSelect
 {
 
 	LEVEL1,
-	LEVEL2 = 0,
+	LEVEL2,
 	LEVEL3,
 	LEVEL4
 };

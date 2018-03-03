@@ -284,9 +284,25 @@ bool BirdmanTheGame::isSpriteColliding(Player* player, GameObject * blocks)
 
 		if (blocks->getIsEndBlock() == true)
 		{
-			level_select = LevelSelect::LEVEL2;
+			switch (level_select)
+			{
+			case LevelSelect::LEVEL1:
+				{
+					level_select = LevelSelect::LEVEL2;
+					break;
+				}
+			case LevelSelect::LEVEL2:
+				{
+					level_select = LevelSelect::LEVEL3;
+					break;
+				}
+			case LevelSelect::LEVEL3:
+				{
+					level_select = LevelSelect::LEVEL1;
+					break;
+				}
+			}
 		}
-
 		return true;
 	}
 
