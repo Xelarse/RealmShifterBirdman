@@ -103,6 +103,11 @@ bool Player::isOnFloor()
 	}
 }
 
+bool Player::getIsGrounded() const
+{
+	return is_grounded;
+}
+
 void Player::setIsGrounded(bool type)
 {
 	is_grounded = type;
