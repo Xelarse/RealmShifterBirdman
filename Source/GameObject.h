@@ -12,13 +12,17 @@ public:
 	virtual void init(ASGE::Renderer * renderer) = 0;
 	virtual void update(const ASGE::GameTime& ms) = 0;
 
+
 	ASGE::Sprite* getObjectSprite();
-	float getSpriteY();
-	float getSpriteX();
-	float getSpriteMaxY();
-	float getSpriteMaxX();
-	bool getIsRendering();
+	float getSpriteY() const;
+	float getSpriteX() const;
+	float getSpriteMaxY() const;
+	float getSpriteMaxX() const;
+	bool getIsRendering() const;
+	float getSpriteOriginX() const;
+	float getSpriteOriginY() const;
 	bool getIsEndBlock();
+
 
 	void setIsRendering(bool value);
 	void setIsEndBlock(bool value);

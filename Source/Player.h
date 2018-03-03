@@ -28,6 +28,7 @@ public:
 	void yVelocity(float vel);
 
 	bool isOnFloor();
+	bool getIsGrounded() const;
 	void setIsGrounded(bool type);
 
 	void setIsJumping(bool type);
