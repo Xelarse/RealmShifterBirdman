@@ -18,6 +18,8 @@ public:
 	void init(ASGE::Renderer * renderer) override;
 	void update(const ASGE::GameTime& ms) override;
 
+
+	bool getIsEndBlock();
 	bool getIsUsed();
 	void setIsUsed(bool option);
 
@@ -29,6 +31,7 @@ private:
 	float height;
 	BlockTypes block_type;
 	bool is_used = false;
+	bool end_block = false;
 };
 
 

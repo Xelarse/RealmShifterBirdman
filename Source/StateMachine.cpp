@@ -8,7 +8,7 @@ std::atomic<PauseState> pause_state = PauseState::HOVER_CONTINUE;
 std::atomic<PlayerJumpState> jump_state = PlayerJumpState::JUMP_OFF;
 std::atomic<PlayerMoveState> move_state = PlayerMoveState::NONE;
 std::atomic<GameoverState> gameover_state = GameoverState::HOVER_MENU;
-std::atomic<LevelSelect> level_state = LevelSelect::LEVEL1;
+std::atomic<LevelSelect> level_select = LevelSelect::LEVEL1;
 std::atomic<WorldTypeState> world_type_state = WorldTypeState::REALWORLD;
 
 /**

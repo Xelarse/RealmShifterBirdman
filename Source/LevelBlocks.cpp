@@ -6,6 +6,7 @@ LevelBlocks::LevelBlocks(ASGE::Renderer* renderer, BlockTypes type, float dim_x,
 	height = dim_y;
 	block_type = type;
 	init(renderer);
+
 }
 
 void LevelBlocks::init(ASGE::Renderer * renderer)
@@ -33,6 +34,7 @@ void LevelBlocks::update(const ASGE::GameTime& ms)
 {
 	//Add update logic here if required
 }
+
 
 bool LevelBlocks::getIsUsed()
 {
