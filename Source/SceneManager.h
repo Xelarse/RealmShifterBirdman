@@ -4,11 +4,13 @@
 #include <vector>
 
 #include "GameObject.h"
+//#include "Levels.h"
 
 class SceneManager
 {
 
 	friend class BirdmanTheGame;
+	//friend class Levels;
 
 	/*Used in a scene, add multiple nodes to a single scene, z_order must be between 0 - 4.*/
 	struct NODE
@@ -24,6 +26,7 @@ class SceneManager
 
 		//The closer the number to 0 the higher it will be rendered into the scene
 		int z_order = -1;
+		bool end_block = false;
 	};
 
 	/*Used to render things into the game, input a Scene that is filled with nodes into the scene
@@ -34,8 +37,8 @@ class SceneManager
 	};
 
 
-
 public:
+
 
 	SceneManager() = default;
 	~SceneManager() = default;

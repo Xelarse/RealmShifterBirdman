@@ -27,7 +27,7 @@ private:
 
 enum class LevelSelect
 {
-	NONE = 0,
+
 	LEVEL1,
 	LEVEL2,
 	LEVEL3,

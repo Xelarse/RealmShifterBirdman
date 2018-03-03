@@ -1,6 +1,6 @@
 #include "GameObject.h"
 
-ASGE::Sprite* GameObject::getObjectSprite() const
+ASGE::Sprite* GameObject::getObjectSprite()
 {
 	return object_sprite.get();
 }
@@ -30,6 +30,11 @@ bool GameObject::getIsRendering() const
 	return is_rendering;
 }
 
+bool GameObject::getIsEndBlock()
+{
+	return is_end_block;
+}
+
 void GameObject::setIsRendering(bool value)
 {
 	is_rendering = value;
@@ -43,4 +48,9 @@ float GameObject::getSpriteOriginX() const
 float GameObject::getSpriteOriginY() const
 {
 	return object_sprite->yPos() + (object_sprite->height() / 2);
+}
+
+void GameObject::setIsEndBlock(bool value)
+{
+	is_end_block = value;
 }
