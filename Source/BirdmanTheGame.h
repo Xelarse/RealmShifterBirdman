@@ -120,7 +120,7 @@ private:
 	void renderMenuState(ASGE::Renderer* renderer);
 	void renderGameOverState(ASGE::Renderer* renderer);
 
-	float collider_tolerance = 10;
+	float collider_tolerance = 15;
 	bool off_block = true;
 
 	std::unique_ptr<SceneManager> scene_manager = nullptr;

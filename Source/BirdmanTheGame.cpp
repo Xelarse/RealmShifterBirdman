@@ -89,11 +89,6 @@ void BirdmanTheGame::update(const ASGE::GameTime& ms)
 	{
 		case OverallState::GAMEPLAY:
 		{
-			if (player->yVelocity() < 0 || player->getIsGrounded())
-			{
-				off_block = true;
-			}
-
 			player->update(ms);
 
 			levelSelection();
@@ -317,14 +312,22 @@ bool BirdmanTheGame::isSpriteColliding(Player* player, GameObject * blocks)
 
 void BirdmanTheGame::landOnBlockCheck(Player* player, GameObject* block)
 {
+	float jump_tollerance = 20;
+
 	if (isSpriteColliding(player, block))
 	{
-		if (player->getSpriteMaxY() <= block->getSpriteY() - 1 || player->getSpriteMaxY() >= block->getSpriteY() + 1)
+		if (player->getSpriteMaxY() > block->getSpriteY() - jump_tollerance && 
+			player->getSpriteMaxY() < block->getSpriteY() + jump_tollerance)
 		{
 			jump_state = PlayerJumpState::JUMP_OFF;
 			player->setIsJumping(false);
 			player->yVelocity(0);
 			off_block = false;
+		}
+
+		else
+		{
+			off_block = true;
 		}
 
 		if (player->getSpriteX() <= (block->getSpriteMaxX() - collider_tolerance) ||
