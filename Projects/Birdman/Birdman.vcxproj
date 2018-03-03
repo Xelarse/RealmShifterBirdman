@@ -118,6 +118,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Backgrounds.h" />
     <ClInclude Include="..\..\Source\BirdmanTheGame.h" />
     <ClInclude Include="..\..\Source\BlockPool.h" />
     <ClInclude Include="..\..\Source\GameFont.h" />
@@ -131,6 +132,7 @@
     <ClInclude Include="..\..\Source\targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Backgrounds.cpp" />
     <ClCompile Include="..\..\Source\BirdmanTheGame.cpp" />
     <ClCompile Include="..\..\Source\BlockPool.cpp" />
     <ClCompile Include="..\..\Source\GameFont.cpp" />
