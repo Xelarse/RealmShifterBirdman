@@ -238,19 +238,24 @@ bool BirdmanTheGame::isSpriteColliding(Player* player, GameObject * blocks)
 
 void BirdmanTheGame::landOnBlockCheck(Player* player, GameObject* block)
 {
+	bool temp_col = false;
 	if (isSpriteColliding(player, block))
 	{
-		if (player->getSpriteMaxY() <= block->getSpriteY() - 1|| player->getSpriteMaxY() >= block->getSpriteY() + 1)
+		if (player->getSpriteMaxY() <= block->getSpriteY() - 1 || player->getSpriteMaxY() >= block->getSpriteY() + 1)
 		{
 			jump_state = PlayerJumpState::JUMP_OFF;
 			player->setIsJumping(false);
 			player->yVelocity(0);
+			temp_col = true;
 		}
 
-		else
-		{
-			move_state = PlayerMoveState::NONE;
-		}
+		//if (player->getSpriteX() <= (block->getSpriteMaxX() - collider_tolerance) &&
+		//	player->getSpriteMaxX() >= (block->getSpriteX() + collider_tolerance) &&
+		//	!temp_col)
+		//{
+		//	if()
+		//	move_state = PlayerMoveState::NONE;
+		//}
 	}
 }
 
