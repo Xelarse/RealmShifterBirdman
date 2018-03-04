@@ -1,100 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="..\..\Source\Backgrounds.cpp" />
+    <ClCompile Include="..\..\Source\BirdmanTheGame.cpp" />
+    <ClCompile Include="..\..\Source\BlockPool.cpp" />
+    <ClCompile Include="..\..\Source\GameFont.cpp" />
+    <ClCompile Include="..\..\Source\GameObject.cpp" />
+    <ClCompile Include="..\..\Source\LevelBlocks.cpp" />
+    <ClCompile Include="..\..\Source\main.cpp" />
+    <ClCompile Include="..\..\Source\Player.cpp" />
+    <ClCompile Include="..\..\Source\SceneManager.cpp" />
+    <ClCompile Include="..\..\Source\StateMachine.cpp" />
+    <ClCompile Include="..\..\Source\stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\BirdmanTheGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\GameFont.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\SceneManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\StateMachine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\LevelBlocks.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\BlockPool.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-=======
-    <ClInclude Include="..\..\Source\Levels.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Backgrounds.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
->>>>>>> 6a2ae3729e8336f17097d033a2fa241250376963
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Source\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\BirdmanTheGame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\GameFont.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\SceneManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\StateMachine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\LevelBlocks.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\BlockPool.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-<<<<<<< HEAD
-=======
-    <ClCompile Include="..\..\Source\Levels.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Backgrounds.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
->>>>>>> 6a2ae3729e8336f17097d033a2fa241250376963
+    <ClInclude Include="..\..\Source\Backgrounds.h" />
+    <ClInclude Include="..\..\Source\BirdmanTheGame.h" />
+    <ClInclude Include="..\..\Source\BlockPool.h" />
+    <ClInclude Include="..\..\Source\GameFont.h" />
+    <ClInclude Include="..\..\Source\GameObject.h" />
+    <ClInclude Include="..\..\Source\LevelBlocks.h" />
+    <ClInclude Include="..\..\Source\Player.h" />
+    <ClInclude Include="..\..\Source\SceneManager.h" />
+    <ClInclude Include="..\..\Source\StateMachine.h" />
+    <ClInclude Include="..\..\Source\stdafx.h" />
+    <ClInclude Include="..\..\Source\targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\Libs\irrKlang\lib\irrKlang.lib" />
