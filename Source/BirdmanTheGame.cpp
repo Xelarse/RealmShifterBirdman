@@ -436,7 +436,6 @@ void BirdmanTheGame::renderGameOverState(ASGE::Renderer * renderer)
 
 void BirdmanTheGame::Level1(ASGE::Renderer * renderer)
 {
-	
 	lv1_block_node0DW.node_game_object = dream_background.get();
 	lv1_block_node0DW.z_order = 3;
 
@@ -506,14 +505,11 @@ void BirdmanTheGame::Level1(ASGE::Renderer * renderer)
 
 void BirdmanTheGame::Level2(ASGE::Renderer* renderer)
 {
-
 	lv2_block_node0DW.node_game_object = dream_background.get();
 	lv2_block_node0DW.z_order = 3;
 
 	lv2_block_node0RW.node_game_object = real_background.get();
 	lv2_block_node0RW.z_order = 3;
-
-
 
 	lv2_block_node1.node_game_object = block_pool->getNewRWBlock();
 	lv2_block_node1.node_game_object->getObjectSprite()->xPos(1);
