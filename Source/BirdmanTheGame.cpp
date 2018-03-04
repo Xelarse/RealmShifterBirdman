@@ -512,14 +512,14 @@ void BirdmanTheGame::renderGameOverState(ASGE::Renderer * renderer)
 	renderer->renderSprite(*pause_background.get(), 3);
 	
 	std::string score = "You finished in :" + std::to_string(int(game_timer));
-	renderer->renderText(score, 500, 200, 2.0, ASGE::COLOURS::DEEPSKYBLUE, -1);
+	renderer->renderText(score, 500, 400, 2.0, ASGE::COLOURS::GREEN, -1);
 
 	if (game_timer < high_score)
 	{
-		renderer->renderText("NEW HIGH SCORE!", 500, 250, 2.0, ASGE::COLOURS::GREEN, -1);
+		renderer->renderText("NEW HIGH SCORE!", 500, 420, 2.0, ASGE::COLOURS::GREEN, -1);
 	}
 
-	renderer->renderText("Press enter to go back to the main menu", 400, 400, 2.0, ASGE::COLOURS::DEEPSKYBLUE, -1);
+	renderer->renderText("Press enter to go back to the main menu", 400, 440, 2.0, ASGE::COLOURS::GREEN, -1);
 }
 
 void BirdmanTheGame::Level1()
