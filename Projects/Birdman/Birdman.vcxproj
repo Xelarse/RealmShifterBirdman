@@ -61,6 +61,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)..\Libs\ASGE\Include;$(SolutionDir)..\Source;$(IncludePath);$(SolutionDir)..\Libs\irrKlang\include</IncludePath>
+    <LibraryPath>$(SolutionDir)..\Libs\ASGE\Bin;$(LibraryPath);$(SolutionDir)..\Libs\irrKlang\Lib</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugFast|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -80,6 +82,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Engine__$(Configuration)_$(PlatformTarget).lib;irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugFast|Win32'">
@@ -115,20 +118,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Backgrounds.h" />
     <ClInclude Include="..\..\Source\BirdmanTheGame.h" />
+    <ClInclude Include="..\..\Source\BlockPool.h" />
     <ClInclude Include="..\..\Source\GameFont.h" />
+    <ClInclude Include="..\..\Source\GameObject.h" />
+    <ClInclude Include="..\..\Source\LevelBlocks.h" />
+    <ClInclude Include="..\..\Source\Levels.h" />
+    <ClInclude Include="..\..\Source\Player.h" />
+    <ClInclude Include="..\..\Source\SceneManager.h" />
+    <ClInclude Include="..\..\Source\StateMachine.h" />
     <ClInclude Include="..\..\Source\stdafx.h" />
     <ClInclude Include="..\..\Source\targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Backgrounds.cpp" />
     <ClCompile Include="..\..\Source\BirdmanTheGame.cpp" />
+    <ClCompile Include="..\..\Source\BlockPool.cpp" />
     <ClCompile Include="..\..\Source\GameFont.cpp" />
+    <ClCompile Include="..\..\Source\GameObject.cpp" />
+    <ClCompile Include="..\..\Source\LevelBlocks.cpp" />
+    <ClCompile Include="..\..\Source\Levels.cpp" />
     <ClCompile Include="..\..\Source\main.cpp" />
+    <ClCompile Include="..\..\Source\Player.cpp" />
+    <ClCompile Include="..\..\Source\SceneManager.cpp" />
+    <ClCompile Include="..\..\Source\StateMachine.cpp" />
     <ClCompile Include="..\..\Source\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugFast|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\Libs\irrKlang\lib\irrKlang.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
