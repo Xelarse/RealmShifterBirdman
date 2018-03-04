@@ -15,12 +15,12 @@ void LevelBlocks::init(ASGE::Renderer * renderer)
 	
 	if (block_type == BlockTypes::DREAM_WORLD)
 	{
-		object_sprite->loadTexture("..\\..\\Resources\\Dream_block.jpg");
+		object_sprite->loadTexture("..\\..\\Resources\\dream_block.png");
 	}
 
 	else if (block_type == BlockTypes::REAL_WORLD)
 	{
-		object_sprite->loadTexture("..\\..\\Resources\\Real_block.jpg");
+		object_sprite->loadTexture("..\\..\\Resources\\real_block.png");
 	}
 	
 
