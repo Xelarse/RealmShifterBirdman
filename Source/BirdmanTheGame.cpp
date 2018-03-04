@@ -55,6 +55,9 @@ bool BirdmanTheGame::init()
 	real_background = std::make_unique<Backgrounds>(renderer.get(), BackgroundTypes::REAL_WORLD);
 
 
+	initHighScore();
+
+
 	scene_manager = std::make_unique<SceneManager>();
 	state_machine = std::make_unique<StateMachine>();
 	block_pool = std::make_unique<BlockPool>(renderer.get());
@@ -94,9 +97,21 @@ void BirdmanTheGame::update(const ASGE::GameTime& ms)
 		case OverallState::GAMEPLAY:
 		{
 			player->update(ms);
-
 			levelSelection();
 
+			game_timer += ms.delta_time.count() / 1000;
+			break;
+		}
+
+		case OverallState::GAMEOVER:
+		{
+			saveHighScore();
+			break;
+		}
+
+		case OverallState::MENU:
+		{
+			gameReset();
 			break;
 		}
 
@@ -106,10 +121,6 @@ void BirdmanTheGame::update(const ASGE::GameTime& ms)
 			break;
 		}
 	}
-	
-
-
-
 }
 
 void BirdmanTheGame::render(const ASGE::GameTime& ms)
@@ -164,6 +175,27 @@ void BirdmanTheGame::keyHandler(const ASGE::SharedEventData data)
 	}
 }
 
+void BirdmanTheGame::initHighScore()
+{
+	std::ifstream InputFile("..\\..\\Resources\\Score.txt");
+	if (InputFile.is_open())
+	{
+		InputFile >> high_score;
+		InputFile.close();
+	}
+}
+
+void BirdmanTheGame::saveHighScore()
+{
+	std::ofstream OutputFile("..\\..\\Resources\\Score.txt");
+	if (game_timer < high_score)
+	{
+		OutputFile << game_timer;
+		high_score = game_timer;
+	}
+	OutputFile.close();
+}
+
 void BirdmanTheGame::initiliseMenus(ASGE::Renderer* renderer)
 {
 	//Main menu init
@@ -198,6 +230,19 @@ void BirdmanTheGame::initiliseMenus(ASGE::Renderer* renderer)
 	pause_text_node.string_colour = ASGE::COLOURS::LIGHTGREEN;
 	pause_text_node.z_order = 1;
 	scene_manager->addNodeToScene(pause_scene, pause_text_node);
+}
+
+void BirdmanTheGame::gameReset()
+{
+	player->getObjectSprite()->xPos(-10);
+	player->getObjectSprite()->yPos(520);
+	level_select = LevelSelect::LEVEL1;
+	game_timer = 0;
+
+	if (!state_machine->isGameActionStateDefault())
+	{
+		state_machine->resetGameActionState();
+	}
 }
 
 void BirdmanTheGame::levelSelection()
@@ -430,6 +475,8 @@ void BirdmanTheGame::renderGameState(ASGE::Renderer * renderer)
 		}
 	}
 
+	std::string score = "Current Time: " + std::to_string(int(game_timer));
+	renderer->renderText(score, 500, 50, 1.0, ASGE::COLOURS::DEEPSKYBLUE, -1);
 	renderer->renderSprite(*player->getObjectSprite());
 }
 
@@ -470,10 +517,24 @@ void BirdmanTheGame::renderMenuState(ASGE::Renderer * renderer)
 
 
 	scene_manager->renderScene(menu_scene, renderer);
+	std::string score = "Highscore : " + std::to_string(int(high_score));
+	renderer->renderText(score, 10, 50, 2.0, ASGE::COLOURS::DEEPSKYBLUE, -1);
 }
 
 void BirdmanTheGame::renderGameOverState(ASGE::Renderer * renderer)
 {
+	renderer->renderSprite(*pause_background.get(), 3);
+	
+	std::string score = "You finished in :" + std::to_string(int(game_timer));
+	renderer->renderText(score, 500, 200, 2.0, ASGE::COLOURS::DEEPSKYBLUE, -1);
+
+
+	if (game_timer < high_score)
+	{
+		renderer->renderText("NEW HIGH SCORE!", 500, 250, 2.0, ASGE::COLOURS::DEEPSKYBLUE, -1);
+	}
+
+	renderer->renderText("Press enter to go back to the main menu", 400, 400, 2.0, ASGE::COLOURS::DEEPSKYBLUE, -1);
 }
 
 void BirdmanTheGame::Level1()

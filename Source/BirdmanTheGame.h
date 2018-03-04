@@ -3,6 +3,7 @@
 #include <Engine\Sprite.h>
 #include <irrKlang.h>
 #include <iostream>
+#include <fstream>
 
 
 #include "SceneManager.h"
@@ -103,9 +104,15 @@ private:
 							       The callback ID assigned by the game engine. */
 
 	//STUFF WE ADD GOES BELOW HERE FOR CLARITY //
+	float high_score = 0;
+	float game_timer = 0;
+	void initHighScore();
+	void saveHighScore();
 
 
 	void initiliseMenus(ASGE::Renderer* renderer);
+	void gameReset();
+
 
 	void levelSelection();
 

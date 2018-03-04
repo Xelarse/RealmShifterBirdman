@@ -225,34 +225,9 @@ void StateMachine::processGameoverState(int input_key)
 {
 	switch (input_key)
 	{
-		case ASGE::KEYS::KEY_LEFT:
-		case ASGE::KEYS::KEY_RIGHT:
-		case ASGE::KEYS::KEY_UP:
-		case ASGE::KEYS::KEY_DOWN:
-		{
-			if (gameover_state == GameoverState::HOVER_MENU)
-			{
-				gameover_state = GameoverState::HOVER_QUIT;
-			}
-
-			else if (gameover_state == GameoverState::HOVER_QUIT)
-			{
-				gameover_state = GameoverState::HOVER_MENU;
-			}
-			break;
-		}
-
 		case ASGE::KEYS::KEY_ENTER:
 		{
-			if (gameover_state == GameoverState::HOVER_MENU)
-			{
-				overall_state = OverallState::MENU;
-			}
-
-			else if (gameover_state == GameoverState::HOVER_QUIT)
-			{
-				overall_state = OverallState::EXIT;
-			}
+			overall_state = OverallState::MENU;
 			break;
 		}
 	}
