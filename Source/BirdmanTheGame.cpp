@@ -162,7 +162,6 @@ void BirdmanTheGame::keyHandler(const ASGE::SharedEventData data)
 	}
 }
 
-
 void BirdmanTheGame::initiliseMenus(ASGE::Renderer* renderer)
 {
 	//Main menu init
@@ -222,6 +221,13 @@ void BirdmanTheGame::levelSelection()
 	}
 	else if (level_select == LevelSelect::LEVEL2)
 	{
+		if (level_1_to_2)
+		{
+			move_state = PlayerMoveState::NONE;
+			player->getObjectSprite()->xPos(30);
+			player->getObjectSprite()->yPos(50);
+			level_1_to_2 = false;
+		}
 
 		if (world_type_state == WorldTypeState::REALWORLD)
 		{
@@ -241,6 +247,13 @@ void BirdmanTheGame::levelSelection()
 	}
 	else if (level_select == LevelSelect::LEVEL3)
 	{
+		if (level_2_to_3)
+		{
+			move_state = PlayerMoveState::NONE;
+			player->getObjectSprite()->xPos(30);
+			player->getObjectSprite()->yPos(50);
+			level_2_to_3 = false;
+		}
 
 		if (world_type_state == WorldTypeState::REALWORLD)
 		{
@@ -289,22 +302,19 @@ bool BirdmanTheGame::isSpriteColliding(Player* player, GameObject * blocks)
 			{
 			case LevelSelect::LEVEL1:
 				{
-				player->getObjectSprite()->xPos(0);
-				player->getObjectSprite()->yPos(170);
 					level_select = LevelSelect::LEVEL2;
-					
+					level_1_to_2 = true;
 					break;
 				}
 			case LevelSelect::LEVEL2:
 				{
 					level_select = LevelSelect::LEVEL3;
-					player->getObjectSprite()->xPos(0);
-					player->getObjectSprite()->yPos(170);
+					level_2_to_3 = true;
 					break;
 				}
 			case LevelSelect::LEVEL3:
 				{
-				level_select = LevelSelect::LEVEL1;
+				overall_state = OverallState::GAMEOVER;
 					break;
 				}
 			}
@@ -589,7 +599,6 @@ void BirdmanTheGame::Level2()
 	lv2_block_node10.node_game_object = block_pool->getNewRWBlock();
 	lv2_block_node10.node_game_object->getObjectSprite()->xPos(600);
 	lv2_block_node10.node_game_object->getObjectSprite()->yPos(500);
-	//lv2_block_node10.node_game_object->setIsEndBlock(true);
 	lv2_block_node9.z_order = 2;
 
 
@@ -664,6 +673,26 @@ void BirdmanTheGame::Level3()
 	lv3_block_node10.node_game_object->setIsEndBlock(true);
 	lv3_block_node10.z_order = 2;
 
+	lv3_block_node11.node_game_object = block_pool->getNewRWBlock();
+	lv3_block_node11.node_game_object->getObjectSprite()->xPos(0);
+	lv3_block_node11.node_game_object->getObjectSprite()->yPos(170);
+	lv3_block_node11.node_game_object->getObjectSprite()->width(100);
+
+	lv3_block_node12.node_game_object = block_pool->getNewDWBlock(); //wall
+	lv3_block_node12.node_game_object->getObjectSprite()->xPos(200);
+	lv3_block_node12.node_game_object->getObjectSprite()->yPos(0);
+	lv3_block_node12.node_game_object->getObjectSprite()->height(600);
+	lv3_block_node12.node_game_object->getObjectSprite()->width(50);
+	lv3_block_node12.z_order = 2;
+
+	lv3_block_node13.node_game_object = block_pool->getNewRWBlock(); //wall
+	lv3_block_node13.node_game_object->getObjectSprite()->xPos(200);
+	lv3_block_node13.node_game_object->getObjectSprite()->yPos(0);
+	lv3_block_node13.node_game_object->getObjectSprite()->width(50);
+	lv3_block_node13.node_game_object->getObjectSprite()->height(600);
+	lv3_block_node13.z_order = 2;
+
+
 
 	scene_manager->addNodeToScene(level3_RW, lv3_block_node1);
 	scene_manager->addNodeToScene(level3_DW, lv3_block_node2);
@@ -675,4 +704,7 @@ void BirdmanTheGame::Level3()
 	scene_manager->addNodeToScene(level3_RW, lv3_block_node8);
 	scene_manager->addNodeToScene(level3_RW, lv3_block_node9);
 	scene_manager->addNodeToScene(level3_RW, lv3_block_node10);
+	scene_manager->addNodeToScene(level3_RW, lv3_block_node11);
+	scene_manager->addNodeToScene(level3_DW, lv3_block_node12);
+	scene_manager->addNodeToScene(level3_RW, lv3_block_node13);
 }

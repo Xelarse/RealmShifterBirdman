@@ -132,6 +132,8 @@ private:
 	
 
 	//for testing currently
+	bool level_1_to_2 = false;
+	bool level_2_to_3 = false;
 
 	std::unique_ptr<Player> player = nullptr;
 	std::unique_ptr<BlockPool> block_pool = nullptr;
@@ -177,6 +179,9 @@ private:
 	SceneManager::NODE lv3_block_node8;
 	SceneManager::NODE lv3_block_node9;
 	SceneManager::NODE lv3_block_node10;
+	SceneManager::NODE lv3_block_node11;
+	SceneManager::NODE lv3_block_node12;
+	SceneManager::NODE lv3_block_node13;
 	
 
 	//Menu scene stuff
