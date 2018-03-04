@@ -9,7 +9,7 @@ Player::Player(ASGE::Renderer * renderer)
 void Player::init(ASGE::Renderer * renderer)
 {
 	object_sprite = renderer->createUniqueSprite();
-	object_sprite->loadTexture("..\\..\\Resources\\Cloud.png");
+	object_sprite->loadTexture("..\\..\\Resources\\PlayerBlack.png");
 
 	object_sprite->xPos(-10);
 	object_sprite->yPos(520);
@@ -101,6 +101,11 @@ bool Player::isOnFloor()
 	{
 		return false;
 	}
+}
+
+bool Player::getIsGrounded() const
+{
+	return is_grounded;
 }
 
 void Player::setIsGrounded(bool type)
