@@ -67,7 +67,6 @@ bool BirdmanTheGame::init()
 	Level1();
 	Level2();
 	Level3();
-
 	
 	return true;
 }
@@ -412,7 +411,7 @@ void BirdmanTheGame::renderGameState(ASGE::Renderer * renderer)
 		}
 		case WorldTypeState::DREAMWORLD:
 		{
-			renderer->renderSprite(*DW_background.node_game_object->getObjectSprite(), DW_background.z_order);
+			renderer->renderSprite(*DW_background.node_game_object->getObjectSprite(), RW_background.z_order);
 			scene_manager->renderScene(level1_DW, renderer);
 			break;
 		}
@@ -431,7 +430,7 @@ void BirdmanTheGame::renderGameState(ASGE::Renderer * renderer)
 		}
 		case WorldTypeState::DREAMWORLD:
 		{
-			renderer->renderSprite(*DW_background.node_game_object->getObjectSprite(), DW_background.z_order);
+			renderer->renderSprite(*DW_background.node_game_object->getObjectSprite(), RW_background.z_order);
 			scene_manager->renderScene(level2_DW, renderer);
 			break;
 		}
@@ -450,7 +449,7 @@ void BirdmanTheGame::renderGameState(ASGE::Renderer * renderer)
 		}
 		case WorldTypeState::DREAMWORLD:
 		{
-			renderer->renderSprite(*DW_background.node_game_object->getObjectSprite(), DW_background.z_order);
+			renderer->renderSprite(*DW_background.node_game_object->getObjectSprite(), RW_background.z_order);
 			scene_manager->renderScene(level3_DW, renderer);
 			break;
 		}
@@ -508,25 +507,19 @@ void BirdmanTheGame::renderGameOverState(ASGE::Renderer * renderer)
 	renderer->renderSprite(*pause_background.get(), 3);
 	
 	std::string score = "You finished in :" + std::to_string(int(game_timer));
-	renderer->renderText(score, 500, 200, 2.0, ASGE::COLOURS::GREEN, -1);
 
+	renderer->renderText(score, 500, 400, 2.0, ASGE::COLOURS::GREEN, -1);
 
 	if (game_timer < high_score)
 	{
-		renderer->renderText("NEW HIGH SCORE!", 500, 250, 2.0, ASGE::COLOURS::GREEN, -1);
+		renderer->renderText("NEW HIGH SCORE!", 500, 440, 2.0, ASGE::COLOURS::GREEN, -1);
 	}
 
-	renderer->renderText("Press enter to go back to the main menu", 400, 400, 2.0, ASGE::COLOURS::GREEN, -1);
+	renderer->renderText("Press enter to go back to the main menu", 400, 480, 2.0, ASGE::COLOURS::GREEN, -1);
 }
 
 void BirdmanTheGame::Level1()
 {
-	DW_background.node_game_object = dream_background.get();
-	DW_background.z_order = 3;
-
-	RW_background.node_game_object = real_background.get();
-	RW_background.z_order = 3;
-
 	lv1_block_node1.node_game_object = block_pool->getNewRWBlock();
 	lv1_block_node1.node_game_object->getObjectSprite()->xPos(200);
 	lv1_block_node1.node_game_object->getObjectSprite()->yPos(620);
@@ -597,12 +590,6 @@ void BirdmanTheGame::Level1()
 
 void BirdmanTheGame::Level2()
 {
-	DW_background.node_game_object = dream_background.get();
-	DW_background.z_order = 3;
-
-	RW_background.node_game_object = real_background.get();
-	RW_background.z_order = 3;
-
 	lv2_block_node1.node_game_object = block_pool->getNewRWBlock(); //start
 	lv2_block_node1.node_game_object->getObjectSprite()->xPos(0);
 	lv2_block_node1.node_game_object->getObjectSprite()->yPos(170);
@@ -662,8 +649,6 @@ void BirdmanTheGame::Level2()
 	lv2_block_node10.node_game_object->getObjectSprite()->yPos(500);
 	lv2_block_node9.z_order = 2;
 
-
-
 	scene_manager->addNodeToScene(level2_RW, lv2_block_node1);
 	scene_manager->addNodeToScene(level2_DW, lv2_block_node2);
 	scene_manager->addNodeToScene(level2_RW, lv2_block_node3);
@@ -678,7 +663,7 @@ void BirdmanTheGame::Level2()
 
 void BirdmanTheGame::Level3()
 {
-
+	// new shit
 	DW_background.node_game_object = dream_background.get();
 	DW_background.z_order = 3;
 
@@ -761,8 +746,6 @@ void BirdmanTheGame::Level3()
 	lv3_block_node13.node_game_object->getObjectSprite()->width(50);
 	lv3_block_node13.node_game_object->getObjectSprite()->height(600);
 	lv3_block_node13.z_order = 2;
-
-
 
 	scene_manager->addNodeToScene(level3_RW, lv3_block_node1);
 	scene_manager->addNodeToScene(level3_DW, lv3_block_node2);
