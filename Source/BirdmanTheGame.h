@@ -110,7 +110,7 @@ private:
 
 	void Level1();
 	void Level2();
-	//void Level3();
+	void Level3();
 
 	bool isSpriteColliding(Player* player, GameObject* block);
 	void landOnBlockCheck(Player* player, GameObject* block);
@@ -132,6 +132,8 @@ private:
 	
 
 	//for testing currently
+	bool level_1_to_2 = false;
+	bool level_2_to_3 = false;
 
 	std::unique_ptr<Player> player = nullptr;
 	std::unique_ptr<BlockPool> block_pool = nullptr;
@@ -156,6 +158,7 @@ private:
 	SceneManager::NODE lv1_block_node7;
 	SceneManager::NODE lv1_block_node8;
 	SceneManager::NODE lv1_block_node9;
+	SceneManager::NODE lv1_block_node10;
 	SceneManager::NODE lv2_block_node1;
 	SceneManager::NODE lv2_block_node2;
 	SceneManager::NODE lv2_block_node3;
@@ -165,6 +168,7 @@ private:
 	SceneManager::NODE lv2_block_node7;
 	SceneManager::NODE lv2_block_node8;
 	SceneManager::NODE lv2_block_node9;
+	SceneManager::NODE lv2_block_node10;
 	SceneManager::NODE lv3_block_node1;
 	SceneManager::NODE lv3_block_node2;
 	SceneManager::NODE lv3_block_node3;
@@ -174,6 +178,10 @@ private:
 	SceneManager::NODE lv3_block_node7;
 	SceneManager::NODE lv3_block_node8;
 	SceneManager::NODE lv3_block_node9;
+	SceneManager::NODE lv3_block_node10;
+	SceneManager::NODE lv3_block_node11;
+	SceneManager::NODE lv3_block_node12;
+	SceneManager::NODE lv3_block_node13;
 	
 
 	//Menu scene stuff
