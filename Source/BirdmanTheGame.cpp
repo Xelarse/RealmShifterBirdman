@@ -184,6 +184,7 @@ void BirdmanTheGame::saveHighScore()
 	if (game_timer < high_score)
 	{
 		OutputFile << game_timer;
+		high_score = game_timer;
 	}
 	OutputFile.close();
 }
