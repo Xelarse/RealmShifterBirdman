@@ -45,6 +45,15 @@
     <ClInclude Include="..\..\Source\BlockPool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
+=======
+    <ClInclude Include="..\..\Source\Levels.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Backgrounds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+>>>>>>> 6a2ae3729e8336f17097d033a2fa241250376963
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\main.cpp">
@@ -77,6 +86,15 @@
     <ClCompile Include="..\..\Source\BlockPool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="..\..\Source\Levels.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Backgrounds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+>>>>>>> 6a2ae3729e8336f17097d033a2fa241250376963
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\Libs\irrKlang\lib\irrKlang.lib" />

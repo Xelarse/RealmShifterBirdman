@@ -654,8 +654,6 @@ void BirdmanTheGame::Level2()
 	lv2_block_node10.node_game_object->getObjectSprite()->yPos(500);
 	lv2_block_node9.z_order = 2;
 
-
-
 	scene_manager->addNodeToScene(level2_RW, lv2_block_node1);
 	scene_manager->addNodeToScene(level2_DW, lv2_block_node2);
 	scene_manager->addNodeToScene(level2_RW, lv2_block_node3);
@@ -746,8 +744,6 @@ void BirdmanTheGame::Level3()
 	lv3_block_node13.node_game_object->getObjectSprite()->width(50);
 	lv3_block_node13.node_game_object->getObjectSprite()->height(600);
 	lv3_block_node13.z_order = 2;
-
-
 
 	scene_manager->addNodeToScene(level3_RW, lv3_block_node1);
 	scene_manager->addNodeToScene(level3_DW, lv3_block_node2);
