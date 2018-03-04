@@ -166,6 +166,7 @@ private:
 	SceneManager::NODE lv2_block_node7;
 	SceneManager::NODE lv2_block_node8;
 	SceneManager::NODE lv2_block_node9;
+	SceneManager::NODE lv2_block_node10;
 	SceneManager::NODE lv3_block_node1;
 	SceneManager::NODE lv3_block_node2;
 	SceneManager::NODE lv3_block_node3;
@@ -175,6 +176,7 @@ private:
 	SceneManager::NODE lv3_block_node7;
 	SceneManager::NODE lv3_block_node8;
 	SceneManager::NODE lv3_block_node9;
+	SceneManager::NODE lv3_block_node10;
 	
 
 	//Menu scene stuff
