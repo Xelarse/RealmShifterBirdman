@@ -12,7 +12,6 @@
 #include "LevelBlocks.h"
 #include "BlockPool.h"
 #include "Backgrounds.h"
-//#include "Levels.h"
 
 using namespace irrklang;
 
@@ -134,13 +133,7 @@ private:
 
 	std::unique_ptr<SceneManager> scene_manager = nullptr;
 	std::unique_ptr<StateMachine> state_machine = nullptr;
-	//std::unique_ptr<Levels> levels = nullptr;
 
-	//std::unique_ptr<irrKlang::ISoundEngine> audio_engine = nullptr;
-
-	
-
-	//for testing currently
 	bool level_1_to_2 = false;
 	bool level_2_to_3 = false;
 
