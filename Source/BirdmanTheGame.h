@@ -11,6 +11,7 @@
 #include "Player.h"
 #include "LevelBlocks.h"
 #include "BlockPool.h"
+#include "Backgrounds.h"
 //#include "Levels.h"
 
 using namespace irrklang;
@@ -119,6 +120,7 @@ private:
 	void Level2();
 	void Level3();
 
+
 	bool isSpriteColliding(Player* player, GameObject* block);
 	void landOnBlockCheck(Player* player, GameObject* block);
 
@@ -148,13 +150,16 @@ private:
 	SceneManager::SCENE gameover_scene;
 	SceneManager::NODE player_node;
 
+
+	std::unique_ptr<Backgrounds> dream_background;
+	std::unique_ptr<Backgrounds> real_background;
+
+	SceneManager::NODE RW_background;
+	SceneManager::NODE DW_background;
+
 	//Level 1 scene stuff
 	SceneManager::SCENE level1_DW;
 	SceneManager::SCENE level1_RW;
-	SceneManager::SCENE level2_DW;
-	SceneManager::SCENE level2_RW;
-	SceneManager::SCENE level3_DW;
-	SceneManager::SCENE level3_RW;
 
 	SceneManager::NODE lv1_block_node1;
 	SceneManager::NODE lv1_block_node2;
@@ -166,6 +171,12 @@ private:
 	SceneManager::NODE lv1_block_node8;
 	SceneManager::NODE lv1_block_node9;
 	SceneManager::NODE lv1_block_node10;
+
+
+	//Level 2 scene stuff
+	SceneManager::SCENE level2_DW;
+	SceneManager::SCENE level2_RW;
+
 	SceneManager::NODE lv2_block_node1;
 	SceneManager::NODE lv2_block_node2;
 	SceneManager::NODE lv2_block_node3;
@@ -176,6 +187,13 @@ private:
 	SceneManager::NODE lv2_block_node8;
 	SceneManager::NODE lv2_block_node9;
 	SceneManager::NODE lv2_block_node10;
+
+
+
+	//Level 3 scene stuff
+	SceneManager::SCENE level3_DW;
+	SceneManager::SCENE level3_RW;
+
 	SceneManager::NODE lv3_block_node1;
 	SceneManager::NODE lv3_block_node2;
 	SceneManager::NODE lv3_block_node3;

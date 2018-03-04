@@ -51,7 +51,12 @@ bool BirdmanTheGame::init()
 
 	//----------------------------- OUR STUFF GOES BELOW HERE ---------------------------
 
+	dream_background = std::make_unique<Backgrounds>(renderer.get(), BackgroundTypes::DREAM_WORLD);
+	real_background = std::make_unique<Backgrounds>(renderer.get(), BackgroundTypes::REAL_WORLD);
+
+
 	initHighScore();
+
 
 	scene_manager = std::make_unique<SceneManager>();
 	state_machine = std::make_unique<StateMachine>();
@@ -61,12 +66,14 @@ bool BirdmanTheGame::init()
 	player_node.node_game_object = player.get();
 	player_node.z_order = 1;
 
+	
 
 	//initAudioEngine();
 	initiliseMenus(renderer.get());
 	Level1();
 	Level2();
 	Level3();
+
 	
 	return true;
 }
@@ -417,11 +424,13 @@ void BirdmanTheGame::renderGameState(ASGE::Renderer * renderer)
 		{
 		case WorldTypeState::REALWORLD:
 		{
+			renderer->renderSprite(*RW_background.node_game_object->getObjectSprite(), RW_background.z_order);
 			scene_manager->renderScene(level1_RW, renderer);
 			break;
 		}
 		case WorldTypeState::DREAMWORLD:
 		{
+			renderer->renderSprite(*DW_background.node_game_object->getObjectSprite(), DW_background.z_order);
 			scene_manager->renderScene(level1_DW, renderer);
 			break;
 		}
@@ -434,11 +443,13 @@ void BirdmanTheGame::renderGameState(ASGE::Renderer * renderer)
 		{
 		case WorldTypeState::REALWORLD:
 		{
+			renderer->renderSprite(*RW_background.node_game_object->getObjectSprite(), RW_background.z_order);
 			scene_manager->renderScene(level2_RW, renderer);
 			break;
 		}
 		case WorldTypeState::DREAMWORLD:
 		{
+			renderer->renderSprite(*DW_background.node_game_object->getObjectSprite(), DW_background.z_order);
 			scene_manager->renderScene(level2_DW, renderer);
 			break;
 		}
@@ -451,11 +462,13 @@ void BirdmanTheGame::renderGameState(ASGE::Renderer * renderer)
 		{
 		case WorldTypeState::REALWORLD:
 		{
+			renderer->renderSprite(*RW_background.node_game_object->getObjectSprite(), RW_background.z_order);
 			scene_manager->renderScene(level3_RW, renderer);
 			break;
 		}
 		case WorldTypeState::DREAMWORLD:
 		{
+			renderer->renderSprite(*DW_background.node_game_object->getObjectSprite(), DW_background.z_order);
 			scene_manager->renderScene(level3_DW, renderer);
 			break;
 		}
@@ -515,6 +528,7 @@ void BirdmanTheGame::renderGameOverState(ASGE::Renderer * renderer)
 	std::string score = "You finished in :" + std::to_string(int(game_timer));
 	renderer->renderText(score, 500, 200, 2.0, ASGE::COLOURS::DEEPSKYBLUE, -1);
 
+
 	if (game_timer < high_score)
 	{
 		renderer->renderText("NEW HIGH SCORE!", 500, 250, 2.0, ASGE::COLOURS::DEEPSKYBLUE, -1);
@@ -525,6 +539,12 @@ void BirdmanTheGame::renderGameOverState(ASGE::Renderer * renderer)
 
 void BirdmanTheGame::Level1()
 {
+	DW_background.node_game_object = dream_background.get();
+	DW_background.z_order = 3;
+
+	RW_background.node_game_object = real_background.get();
+	RW_background.z_order = 3;
+
 	lv1_block_node1.node_game_object = block_pool->getNewRWBlock();
 	lv1_block_node1.node_game_object->getObjectSprite()->xPos(200);
 	lv1_block_node1.node_game_object->getObjectSprite()->yPos(620);
@@ -596,6 +616,12 @@ void BirdmanTheGame::Level1()
 
 void BirdmanTheGame::Level2()
 {
+	DW_background.node_game_object = dream_background.get();
+	DW_background.z_order = 3;
+
+	RW_background.node_game_object = real_background.get();
+	RW_background.z_order = 3;
+
 	lv2_block_node1.node_game_object = block_pool->getNewRWBlock(); //start
 	lv2_block_node1.node_game_object->getObjectSprite()->xPos(0);
 	lv2_block_node1.node_game_object->getObjectSprite()->yPos(170);
@@ -671,6 +697,13 @@ void BirdmanTheGame::Level2()
 
 void BirdmanTheGame::Level3()
 {
+
+	DW_background.node_game_object = dream_background.get();
+	DW_background.z_order = 3;
+
+	RW_background.node_game_object = real_background.get();
+	RW_background.z_order = 3;
+
 	lv3_block_node1.node_game_object = block_pool->getNewRWBlock();
 	lv3_block_node1.node_game_object->getObjectSprite()->xPos(1180);
 	lv3_block_node1.node_game_object->getObjectSprite()->yPos(620);
