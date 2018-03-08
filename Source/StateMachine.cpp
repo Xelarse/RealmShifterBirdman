@@ -52,6 +52,7 @@ void StateMachine::resetGameActionState() const
 {
 	jump_state = PlayerJumpState::JUMP_OFF;
 	move_state = PlayerMoveState::NONE;
+	world_type_state = WorldTypeState::REALWORLD;
 }
 
 /**
@@ -146,7 +147,7 @@ void StateMachine::processPauseState(int input_key)
 		{
 			if (pause_state == PauseState::HOVER_QUIT)
 			{
-				overall_state = OverallState::EXIT;
+				overall_state = OverallState::MENU;
 			}
 
 			else if (pause_state == PauseState::HOVER_CONTINUE)

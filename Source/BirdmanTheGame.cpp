@@ -174,6 +174,12 @@ void BirdmanTheGame::saveHighScore()
 		OutputFile << game_timer;
 		high_score = game_timer;
 	}
+
+	else
+	{
+		OutputFile << high_score;
+	}
+
 	OutputFile.close();
 }
 
@@ -473,7 +479,7 @@ void BirdmanTheGame::renderPauseState(ASGE::Renderer * renderer)
 	else if (pause_state == PauseState::HOVER_QUIT)
 	{
 		pause_scene.scene_renderables.pop_back();
-		pause_text_node.node_string = "Hit enter to exit! \n \n Press left or right to cycle through the menu";
+		pause_text_node.node_string = "Hit enter to go back to menu! \n \n Press left or right to cycle through the menu";
 		scene_manager->addNodeToScene(pause_scene, pause_text_node);
 	}
 
